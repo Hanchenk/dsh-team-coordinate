@@ -10,6 +10,7 @@ import { AuditLog } from "./audit.mjs";
 import { createAdminApi } from "./admin-api.mjs";
 import { createOwnership, guardMemberRequest, filterMemberResponse, learnWorkspace, learnSession } from "./policy.mjs";
 import { upstreamRpc } from "./upstream.mjs";
+import { findDshRoot, applySettingsPatch, settingsPatchStatus } from "./patch.mjs";
 import { filterHostFrame, filterMuxFrame, isAllowedClientFrame } from "./ws-filter.mjs";
 import { injectSpaShim } from "./spa-shim.mjs";
 import { compatibilityReport } from "./compat.mjs";
@@ -181,7 +182,10 @@ function serveAdminUi(res, pathname) {
   const target = path.resolve(ADMIN_UI, file);
   if (!target.startsWith(ADMIN_UI) || !fs.existsSync(target) || !fs.statSync(target).isFile()) return false;
   const type = file.endsWith(".js") ? "text/javascript" : file.endsWith(".css") ? "text/css" : "text/html";
-  send(res, 200, fs.readFileSync(target), { "content-type": type + "; charset=utf-8" });
+  // readFileSync 返回 Buffer，send() 会对非 string body 走 JSON.stringify，
+  // 导致 admin 页面返回 {"type":"Buffer","data":[...]} 而不是 HTML（Issue #1）。
+  // 显式读成 utf8 字符串，让 send 按文本发送。
+  send(res, 200, fs.readFileSync(target, "utf8"), { "content-type": type + "; charset=utf-8" });
   return true;
 }
 
@@ -218,6 +222,23 @@ export async function startServer() {
     ownership: context.ownership,
     audit: context.audit
   });
+  // 远程设置补丁：局域网/域名访问时 dsh 客户端 settings 会走 memory 模式导致
+  // 「加载提供方目录失败: settings are unavailable in this browser」（Issue #2，上游
+  // 0.1.1-rc.2 回归）。启动时自动把客户端强制为 host 模式（幂等）；dsh 升级覆盖
+  // bundle 后，重启网关即可自动重打。找不到 dsh 目录时不阻塞启动。
+  try {
+    const dshRoot = findDshRoot(context.config.dshRoot);
+    if (dshRoot) {
+      const result = applySettingsPatch(dshRoot);
+      if (result === "applied") context.audit.write("system.settings-patch-applied", { dshRoot });
+      else if (result === "missing") context.audit.write("system.settings-patch-missing", { dshRoot });
+    } else {
+      context.audit.write("system.settings-patch-skipped", { reason: "dsh root not found" });
+    }
+  } catch (error) {
+    context.audit.write("system.settings-patch-error", { error: error.message });
+  }
+
   // 启动时上游可能还没就绪（比如同时重启）：后台重试直到同步成功；
   // 之后每 5 分钟兜底重同步一次，防止事件丢失导致归属表漂移。
   const syncOwnership = async () => {

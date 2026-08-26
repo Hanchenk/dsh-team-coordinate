@@ -14,6 +14,9 @@ export function defaultConfig(home = defaultHome()) {
     listenHost: "0.0.0.0",
     listenPort: DEFAULT_PORT,
     upstream: DEFAULT_UPSTREAM,
+    // 可选的 dsh 安装目录（@deepseek-ai/dsh）。缺省时自动探测：
+    // npm root -g → 当前目录向上 → 常见路径。用于远程设置补丁。
+    dshRoot: null,
     workspaceRoot: path.join(home, "workspaces"),
     sharedRoot: path.join(home, "shared"),
     users: []

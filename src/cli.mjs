@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { defaultConfig, defaultHome, saveConfig, loadConfig } from "./config.mjs";
 import { createUser, resetPassword, setUserStatus, setDisplayName } from "./users.mjs";
 import { compatibilityReport } from "./compat.mjs";
+import { findDshRoot, patchReport, applySettingsPatch, rollbackSettingsPatch, settingsPatchStatus } from "./patch.mjs";
 import { launchdPlist, launchdPath, LAUNCHD_LABEL } from "./service-launchd.mjs";
 import { systemdUnit, systemdPath, SYSTEMD_UNIT } from "./service-systemd.mjs";
 
@@ -21,6 +22,9 @@ function printHelp() {
   dsh-team-hub user disable <name>
   dsh-team-hub user enable <name>
   dsh-team-hub user reset-password <name>
+  dsh-team-hub patch status [--dsh-root <path>]
+  dsh-team-hub patch apply [--dsh-root <path>]
+  dsh-team-hub patch rollback [--dsh-root <path>]
   dsh-team-hub service install|uninstall|status
 
 环境变量：
@@ -90,6 +94,42 @@ async function selftest() {
   if (!report.ok) process.exitCode = 1;
 }
 
+async function patchCommand(args) {
+  const action = args[0];
+  const dshRoot = option(args, "--dsh-root");
+  if (action === "status") {
+    const report = patchReport(dshRoot);
+    if (report.status === "dsh-not-found") {
+      console.log("未找到 dsh 安装目录。可用 --dsh-root <path> 显式指定。");
+      process.exitCode = 1;
+      return;
+    }
+    console.log("dsh 目录：" + report.root);
+    const state = settingsPatchStatus(report.root);
+    console.log(state === "patched" ? "settings host 模式补丁：已打 ✓" : state === "unpatched" ? "settings host 模式补丁：未打" : "settings bundle 未找到");
+    return;
+  }
+  const root = findDshRoot(dshRoot);
+  if (root === null) {
+    console.log("未找到 dsh 安装目录。可用 --dsh-root <path> 显式指定。");
+    process.exitCode = 1;
+    return;
+  }
+  if (action === "apply") {
+    const result = applySettingsPatch(root);
+    console.log(result === "applied" ? "补丁已应用" : result === "unchanged" ? "补丁已是应用状态" : "settings bundle 未找到");
+    if (result === "missing") process.exitCode = 1;
+    return;
+  }
+  if (action === "rollback") {
+    const result = rollbackSettingsPatch(root);
+    console.log(result === "rolled-back" ? "补丁已回滚" : result === "no-backup" ? "无备份可回滚" : "settings bundle 未找到");
+    if (result === "missing") process.exitCode = 1;
+    return;
+  }
+  throw new Error("未知 patch 命令（status|apply|rollback）");
+}
+
 async function serviceCommand(args) {
   const action = args[0];
   const home = defaultHome();
@@ -120,6 +160,7 @@ export async function runCli(args) {
   if (!command || command === "help" || command === "--help") return printHelp();
   if (command === "init") return init(args.slice(1));
   if (command === "user") return userCommand(args.slice(1));
+  if (command === "patch") return patchCommand(args.slice(1));
   if (command === "selftest") return selftest();
   if (command === "service") return serviceCommand(args.slice(1));
   if (command === "start") {

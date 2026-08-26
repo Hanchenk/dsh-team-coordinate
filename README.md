@@ -66,10 +66,29 @@ dsh-team-hub user add <name> [--role member|admin]
 dsh-team-hub user disable <name>
 dsh-team-hub user enable <name>
 dsh-team-hub user reset-password <name>
+dsh-team-hub patch status [--dsh-root <path>]
+dsh-team-hub patch apply [--dsh-root <path>]
+dsh-team-hub patch rollback [--dsh-root <path>]
 dsh-team-hub service install
 dsh-team-hub service status
 dsh-team-hub service uninstall
 ```
+
+### 远程设置补丁（patch）
+
+dsh 上游把 settings 设计为仅本机（loopback）可用：通过局域网 IP/域名访问时，
+设置页会报「加载提供方目录失败: settings are unavailable in this browser」
+（dsh 上游 0.1.1-rc.2 回归）。dsh-team-hub 启动时会自动给 dsh 客户端打补丁，
+把 settings 强制为 host 模式（幂等，dsh 升级后重启网关自动重打）。
+
+```bash
+dsh-team-hub patch status    # 查看补丁状态
+dsh-team-hub patch apply     # 手动应用
+dsh-team-hub patch rollback  # 回滚（恢复 dsh 原始文件）
+```
+
+找不到 dsh 安装目录时，用 `--dsh-root <path>` 显式指定，或在 config.json 里设置
+`"dshRoot": "<path>"`。
 
 运行数据默认保存到：
 

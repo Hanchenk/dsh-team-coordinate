@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.5
+
+- 修复管理后台 /admin 返回 Buffer JSON 而非 HTML 的异常（Issue #1）
+- 新增远程设置补丁：启动时自动将 dsh 客户端 settings 强制为 host 模式，
+  修复局域网/域名访问时「加载提供方目录失败: settings are unavailable in this browser」
+  （Issue #2，对应 dsh 上游 0.1.1-rc.2 回归，参考 dsh-passwords v2.6.0 方案）。
+  提供 `dsh-team-hub patch status|apply|rollback` 命令（幂等、带备份、可回滚）
+- 新增 config.dshRoot 可选字段，用于显式指定 dsh 安装目录
+
 ## 0.2.4
 
 - 修复网关重启时上游未就绪导致成员工作区消失（启动重试 + 每 5 分钟兜底重同步）

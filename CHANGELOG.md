@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.7
+
+- 修复 Admin 控制台「重置密码 / 创建用户」点击后提示不显示的问题：renderUsers
+  重写 #app.innerHTML 会清空 #message，改用 pendingMessage 在渲染后恢复提示
+
 ## 0.2.6
 
 - 修复 /admin 二次问题：admin-ui 资源改为绝对路径 /admin/...，

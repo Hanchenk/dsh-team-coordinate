@@ -1,5 +1,8 @@
 const app = document.querySelector("#app");
 const nav = [...document.querySelectorAll("nav a")];
+// 渲染后要恢复的提示消息：renderUsers 会重写 #app.innerHTML（清掉 #message），
+// 操作类提示（新初始密码、新建用户密码）先存这里，渲染完成后再写回。
+let pendingMessage = "";
 
 async function api(path, options = {}) {
   const response = await fetch("/__teamhub/api" + path, {
@@ -53,11 +56,15 @@ async function renderUsers() {
     <button class="secondary" data-action="reset" data-name="${esc(u.name)}">重置密码</button>
     <button class="secondary" data-action="${u.status === "disabled" ? "enable" : "disable"}" data-name="${esc(u.name)}">${u.status === "disabled" ? "启用" : "禁用"}</button></td></tr>`).join("")}
     </tbody></table><p id="message"></p></section>`;
+  if (pendingMessage) {
+    document.querySelector("#message").innerHTML = pendingMessage;
+    pendingMessage = "";
+  }
   document.querySelector("#create-user").onsubmit = async event => {
     event.preventDefault();
     const form = new FormData(event.target);
     const result = await api("/users", { method: "POST", body: { name: form.get("name"), role: form.get("role") } });
-    document.querySelector("#message").innerHTML = `初始密码：<code class="mono">${esc(result.initialPassword)}</code>（只显示一次）`;
+    pendingMessage = `初始密码：<code class="mono">${esc(result.initialPassword)}</code>（只显示一次）`;
     await renderUsers();
   };
   app.onclick = async event => {
@@ -71,7 +78,7 @@ async function renderUsers() {
     }
     if (button.dataset.action === "reset") {
       const result = await api(`/users/${encodeURIComponent(name)}/reset-password`, { method: "POST" });
-      document.querySelector("#message").innerHTML = `新初始密码：<code class="mono">${esc(result.initialPassword)}</code>（只显示一次）`;
+      pendingMessage = `新初始密码：<code class="mono">${esc(result.initialPassword)}</code>（只显示一次）`;
     } else {
       await api(`/users/${encodeURIComponent(name)}/status`, { method: "POST", body: { status: button.dataset.action === "disable" ? "disabled" : "active" } });
     }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6
+
+- 修复 /admin 二次问题：admin-ui 资源改为绝对路径 /admin/...，
+  /admin 精确匹配 302 到 /admin/（杜绝无尾斜杠时相对路径解析到根目录导致
+  样式/脚本 404、页面显示「加载中…」）
+
 ## 0.2.5
 
 - 修复管理后台 /admin 返回 Buffer JSON 而非 HTML 的异常（Issue #1）

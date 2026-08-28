@@ -304,7 +304,10 @@ export async function startServer() {
       }
       if (url.pathname === "/admin" || url.pathname.startsWith("/admin/")) {
         if (user.role !== "admin") return send(res, 403, "admin only");
-        return serveAdminUi(res, url.pathname === "/admin" ? "/" : url.pathname.slice("/admin".length)) || send(res, 404, "not found");
+        // 无尾斜杠的 /admin 统一 302 到 /admin/：index.html 里的资源用绝对路径
+        // /admin/... 引用，若直接服务 /admin 会导致相对解析错位（Issue #1 二次修复）。
+        if (url.pathname === "/admin") return send(res, 302, "", { location: "/admin/" });
+        return serveAdminUi(res, url.pathname.slice("/admin".length)) || send(res, 404, "not found");
       }
       if (url.pathname.startsWith("/__teamhub/api/")) {
         if (user.role !== "admin") return send(res, 403, { error: "admin only" });

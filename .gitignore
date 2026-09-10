@@ -9,3 +9,7 @@ sessions.json
 logs/
 workspaces/
 shared/
+team-ui/
+packages/dsh-plugin-team-hub/lib/
+artifacts/
+.env.team

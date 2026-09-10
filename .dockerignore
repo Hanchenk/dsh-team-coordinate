@@ -1,0 +1,7 @@
+.git
+node_modules
+artifacts
+*.tgz
+.env*
+team-ui
+packages/dsh-plugin-team-hub/lib

@@ -1,5 +1,11 @@
 # dsh-team-hub
 
+## 新增：Desktop 内网项目协作 Alpha
+
+现已新增独立的 `team` 服务模式及 `dsh-plugin-team-hub` 插件：五类业务角色、项目邀请、会话绑定、模型自动整理和自动发布、项目记忆同步。使用公司内网 HTTP，无需 HTTPS；原网关模式保持可用。
+
+部署、插件打包安装、测试及当前限制见 [内网项目协作说明](docs/team-collaboration.md)。新模式需 PostgreSQL，与下文原单宿主网关模式分开配置。
+
 把单用户的 [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness) Web 实例，变成局域网内可安全共用的团队服务。
 
 dsh-team-hub 位于浏览器和本地 DSH 实例之间。它不修改 DSH，而是在外层提供登录、角色、工作区隔离、RPC 过滤、WebSocket 事件过滤、Admin 控制台和审计日志。

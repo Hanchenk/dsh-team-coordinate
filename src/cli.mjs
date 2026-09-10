@@ -14,6 +14,7 @@ function printHelp() {
   console.log(`dsh-team-hub
 
 用法：
+  dsh-team-hub team init|user-add|start  内网项目协作服务，见 docs/team-collaboration.md
   dsh-team-hub init [--port 3090] [--upstream http://127.0.0.1:3080]
   dsh-team-hub start
   dsh-team-hub selftest
@@ -158,6 +159,10 @@ async function serviceCommand(args) {
 export async function runCli(args) {
   const command = args[0];
   if (!command || command === "help" || command === "--help") return printHelp();
+  if (command === "team") {
+    const { runTeamCli } = await import("./team/cli.mjs");
+    return runTeamCli(args.slice(1));
+  }
   if (command === "init") return init(args.slice(1));
   if (command === "user") return userCommand(args.slice(1));
   if (command === "patch") return patchCommand(args.slice(1));

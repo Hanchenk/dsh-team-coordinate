@@ -10,6 +10,7 @@
     "bin",
     "src",
     "admin-ui",
+    "team-ui",
     "README.md",
     "README.en.md",
     "LICENSE",
@@ -17,6 +18,11 @@
     "docs"
   ],
   "scripts": {
+    "team": "node bin/dsh-team-hub.js team start",
+    "build:plugin": "node scripts/build-team-plugin.mjs",
+    "test:team": "node --test test/team/*.test.mjs",
+    "verify:team-ui": "node scripts/verify-team-ui.mjs",
+    "prepack": "npm run build:plugin",
     "start": "node bin/dsh-team-hub.js start",
     "test": "node --test test/*.test.mjs",
     "selftest": "node bin/dsh-team-hub.js selftest",
@@ -36,7 +42,16 @@
   },
   "license": "MIT",
   "dependencies": {
+    "pg": "^8.16.3",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "esbuild": "^0.25.9",
+    "lucide": "^0.468.0",
+    "playwright": "^1.63.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "repository": {
     "type": "git",

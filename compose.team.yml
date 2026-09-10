@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: teamhub
+      POSTGRES_USER: team
+      POSTGRES_PASSWORD: ${TEAM_POSTGRES_PASSWORD:?Set TEAM_POSTGRES_PASSWORD}
+    volumes:
+      - team-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U team -d teamhub"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+  hub:
+    build:
+      context: .
+      dockerfile: Dockerfile.team
+    ports:
+      - "${TEAM_BIND_IP:-0.0.0.0}:${TEAM_PORT:-3090}:3090"
+    environment:
+      PGHOST: db
+      PGUSER: team
+      PGPASSWORD: ${TEAM_POSTGRES_PASSWORD}
+      PGDATABASE: teamhub
+      TEAM_HOST: 0.0.0.0
+      TEAM_PORT: 3090
+      TEAM_ALLOWED_HOSTS: ${TEAM_ALLOWED_HOSTS:-localhost:3090,127.0.0.1:3090}
+      TEAM_MODEL_BASE_URL: ${TEAM_MODEL_BASE_URL:-}
+      TEAM_MODEL_NAME: ${TEAM_MODEL_NAME:-}
+      TEAM_MODEL_API_KEY: ${TEAM_MODEL_API_KEY:-}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3090/health').then(r => { if (!r.ok) process.exit(1); }).catch(() => process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+volumes:
+  team-postgres:

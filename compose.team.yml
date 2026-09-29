@@ -30,6 +30,20 @@ services:
       TEAM_MODEL_BASE_URL: ${TEAM_MODEL_BASE_URL:-}
       TEAM_MODEL_NAME: ${TEAM_MODEL_NAME:-}
       TEAM_MODEL_API_KEY: ${TEAM_MODEL_API_KEY:-}
+      TEAM_SSO_BASE_URL: ${TEAM_SSO_BASE_URL:-}
+      TEAM_CERTIFICATE_BASE_URL: ${TEAM_CERTIFICATE_BASE_URL:-}
+      TEAM_SSO_PROVIDER: ${TEAM_SSO_PROVIDER:-yemast}
+      TEAM_SSO_TIMEOUT_MS: ${TEAM_SSO_TIMEOUT_MS:-5000}
+      TEAM_SSO_ALLOW_INSECURE: ${TEAM_SSO_ALLOW_INSECURE:-false}
+      TEAM_SSO_TRUST_PROXY: ${TEAM_SSO_TRUST_PROXY:-false}
+      TEAM_SSO_PROXY_ADDRESSES: "${TEAM_SSO_PROXY_ADDRESSES:-127.0.0.1,::1}"
+      TEAM_SSO_DEFAULT_ROLES: ${TEAM_SSO_DEFAULT_ROLES:-developer}
+      TEAM_SECRET_DIR: /var/lib/team-secrets
+      TEAM_GITLAB_HOSTS: ${TEAM_GITLAB_HOSTS:-gitlab.yemast.com}
+      TEAM_PLUGIN_RELEASE_DIR: /var/lib/team-plugin-releases
+    volumes:
+      - team-agent-secrets:/var/lib/team-secrets
+      - ./artifacts/plugin-releases:/var/lib/team-plugin-releases:ro
     depends_on:
       db:
         condition: service_healthy
@@ -40,5 +54,41 @@ services:
       retries: 3
       start_period: 15s
     restart: unless-stopped
+  agent-runtime:
+    profiles: [agents]
+    image: dsh-team-agent-runtime:rc1
+    build:
+      context: .
+      dockerfile: Dockerfile.agent-runtime
+    command: [node, -e, "console.log('AgentTeams runtime image ready')"]
+  agent-supervisor:
+    profiles: [agents]
+    build:
+      context: .
+      dockerfile: Dockerfile.agent-supervisor
+    environment:
+      PGHOST: db
+      PGUSER: team
+      PGPASSWORD: ${TEAM_POSTGRES_PASSWORD}
+      PGDATABASE: teamhub
+      TEAM_SECRET_DIR: /var/lib/team-secrets
+      TEAM_GITLAB_HOSTS: ${TEAM_GITLAB_HOSTS:-gitlab.yemast.com}
+      TEAM_RUN_VOLUME: dsh-team-agent-data
+      TEAM_RUN_NETWORK: ${TEAM_RUN_NETWORK:-dsh-team_default}
+      TEAM_RUN_CONCURRENCY: ${TEAM_RUN_CONCURRENCY:-2}
+    group_add: ["${TEAM_DOCKER_GID:-0}"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - team-agent-data:/var/lib/team-runs
+      - team-agent-secrets:/var/lib/team-secrets
+    depends_on:
+      db:
+        condition: service_healthy
+      agent-runtime:
+        condition: service_completed_successfully
+    restart: unless-stopped
 volumes:
   team-postgres:
+  team-agent-data:
+    name: dsh-team-agent-data
+  team-agent-secrets:

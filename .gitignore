@@ -13,3 +13,4 @@ team-ui/
 packages/dsh-plugin-team-hub/lib/
 artifacts/
 .env.team
+.plugin-signing/

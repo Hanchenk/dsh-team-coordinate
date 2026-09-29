@@ -1,0 +1,2734 @@
+[
+  {
+    "id": "a-share-skills",
+    "name": "A股研究团队 — 主理人",
+    "description": "A股研究团队主理人（古见远 · 研究总监）。调度 7 位专业成员（宏观策略师、市场解读师、个股研究员、估值定价师、产业链分析师、资金行为分析师、风险诊断师）按 6 种预设 Workflow 完成 A 股研究工作，输出结构化研究报告。 触发词：A股、股票分析、市场分析、板块分析、持仓诊断、个股研究、 宏观分析、产业链、资金流向、估值分析、风险诊断、 股票推荐、板块推荐、投资建议、该不该买、能不能买、 今天怎么走、开盘前分析、市场情绪、主线、板块、ETF。",
+    "version": "3aa76a4ea255",
+    "members": [],
+    "resources": [
+      {
+        "file": "a-share-valuation-pricer/SKILL.md",
+        "name": "估值定价师 — 贾·不·贵（Fair）"
+      },
+      {
+        "file": "a-share-stock-researcher/SKILL.md",
+        "name": "个股研究员 — 颜·一·深（Depth）"
+      },
+      {
+        "file": "a-share-risk-doctor/SKILL.md",
+        "name": "风险诊断师 — 方·有·安（Safe）"
+      },
+      {
+        "file": "a-share-money-tracker/SKILL.md",
+        "name": "资金行为分析师 — 金·向·北（Tracker）"
+      },
+      {
+        "file": "a-share-market-reader/SKILL.md",
+        "name": "市场解读师 — 潘·明·哲（Keen）"
+      },
+      {
+        "file": "a-share-macro-strategist/SKILL.md",
+        "name": "宏观策略师 — 洪·远·见（Vision）"
+      },
+      {
+        "file": "a-share-industry-mapper/SKILL.md",
+        "name": "产业链分析师 — 连·拓·远（Chain）"
+      },
+      {
+        "file": "a-share-advisor/SKILL.md",
+        "name": "A股研究团队 — 主理人"
+      }
+    ]
+  },
+  {
+    "id": "academic-journal-selector-skills",
+    "name": "学术选刊顾问团 v3.0 — 主理人：甄刊明",
+    "description": "学术选刊顾问团 v3.0 主理人 — 输入论文主题+摘要+全文，自动推荐中文普通/中文核心/SCI/SSCI投稿期刊。双管道并行分析（中外刊独立匹配），冲稳保三档策略，附录用概率、审稿周期、证据链。",
+    "version": "5c98aaf72cfd",
+    "members": [],
+    "resources": [
+      {
+        "file": "paper-reviewer/SKILL.md",
+        "name": "评审模拟专家 · 审言 — paper-reviewer"
+      },
+      {
+        "file": "en-pipeline-scout/SKILL.md",
+        "name": "外文刊猎手 · 刊搜 — en-pipeline-scout"
+      },
+      {
+        "file": "en-pipeline-matcher/SKILL.md",
+        "name": "外文刊匹配师 · 刊策 — en-pipeline-matcher"
+      },
+      {
+        "file": "cn-pipeline-scout/SKILL.md",
+        "name": "中文刊猎手 · 刊探 — cn-pipeline-scout"
+      },
+      {
+        "file": "cn-pipeline-matcher/SKILL.md",
+        "name": "中文刊匹配师 · 刊评 — cn-pipeline-matcher"
+      },
+      {
+        "file": "academic-journal-selector-team-lead/SKILL.md",
+        "name": "学术选刊顾问团 v3.0 — 主理人：甄刊明"
+      }
+    ]
+  },
+  {
+    "id": "ai-content-creator-skills",
+    "name": "AI 内容创作专家团 - 主理人",
+    "description": "AI 内容创作专家团主理人（司远 · 创意制片人）。协调 6 位专业成员（creative-strategist、copywriter、video-generator、image-creator、video-editor、content-adapter）按预设 Workflow 完成多模态内容生产全流程。 触发词：\"帮我做个视频\"、\"生成一段宣传片\"、\"做一套宣传物料\"、\"写一篇带配图的文章\"、\"帮我设计品牌视觉\"、\"制作短视频\"、\"内容创作一条龙\"。 路由逻辑：单一维度任务走单 Agent 直调；综合性内容需求走对应预设 Workflow。",
+    "version": "ab70db4ee570",
+    "members": [
+      {
+        "id": "creative-strategist",
+        "name": "策凌（Celine）创意策划师",
+        "file": "creative-strategist/SKILL.md"
+      },
+      {
+        "id": "copywriter",
+        "name": "笔澜（Penn）文案创作专家",
+        "file": "copywriter/SKILL.md"
+      },
+      {
+        "id": "video-generator",
+        "name": "维欧（Veo）视频生成专家",
+        "file": "video-generator/SKILL.md"
+      },
+      {
+        "id": "image-creator",
+        "name": "珀西（Percy）图文创作专家",
+        "file": "image-creator/SKILL.md"
+      },
+      {
+        "id": "video-editor",
+        "name": "柯立（Clip）视频编辑专家",
+        "file": "video-editor/SKILL.md"
+      },
+      {
+        "id": "content-adapter",
+        "name": "艾达（Ada）素材改编专家",
+        "file": "content-adapter/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "概览.md",
+        "name": "AI 内容创作专家团 Skill 文档集"
+      },
+      {
+        "file": "video-generator/SKILL.md",
+        "name": "视频生成专家 - 维欧(Veo)"
+      },
+      {
+        "file": "video-editor/SKILL.md",
+        "name": "视频编辑专家 - 柯立(Clip)"
+      },
+      {
+        "file": "team-lead/SKILL.md",
+        "name": "AI 内容创作专家团 - 主理人"
+      },
+      {
+        "file": "image-creator/SKILL.md",
+        "name": "图文创作专家 - 珀西(Percy)"
+      },
+      {
+        "file": "creative-strategist/SKILL.md",
+        "name": "创意策划师 - 策凌(Celine)"
+      },
+      {
+        "file": "copywriter/SKILL.md",
+        "name": "文案创作专家 - 笔澜(Penn)"
+      },
+      {
+        "file": "content-adapter/SKILL.md",
+        "name": "素材改编专家 - 艾达(Ada)"
+      },
+      {
+        "file": "ai-content-production/SKILL.md",
+        "name": "AI 多模态内容生产技能包"
+      }
+    ]
+  },
+  {
+    "id": "ai-data-copilot-skills",
+    "name": "智数分析专家团 - 主理人诺亚（Nova）",
+    "description": "智数分析专家团主理人（诺亚 Nova · 首席数据编排师）。协调 5 位专业成员（sql-analyst、data-scientist、knowledge-researcher、dashboard-designer、report-composer）按预设 Workflow 完成端到端数据分析交付。 触发词：\"分析数据\"、\"生成报告\"、\"数据画像\"、\"查数据库\"、\"数据分析\"、\"帮我分析\"、\"数据可视化\"、\"仪表盘\"。 路由逻辑：单一维度任务走单 agent 直调；综合性任务走对应 Workflow。",
+    "version": "f66250181a96",
+    "members": [
+      {
+        "id": "sql-analyst",
+        "name": "秦逸（Quinn）",
+        "file": "sql-analyst/SKILL.md"
+      },
+      {
+        "id": "data-scientist",
+        "name": "赛奇（Sage）",
+        "file": "data-scientist/SKILL.md"
+      },
+      {
+        "id": "knowledge-researcher",
+        "name": "瑞卡（Rika）",
+        "file": "knowledge-researcher/SKILL.md"
+      },
+      {
+        "id": "dashboard-designer",
+        "name": "达仕（Dash）",
+        "file": "dashboard-designer/SKILL.md"
+      },
+      {
+        "id": "report-composer",
+        "name": "若溪（Rex）",
+        "file": "report-composer/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "sql-analyst/SKILL.md",
+        "name": "SQL查询架构师 — 秦逸（Quinn）"
+      },
+      {
+        "file": "report-composer/SKILL.md",
+        "name": "洞察报告撰写师 — 若溪（Rex）"
+      },
+      {
+        "file": "knowledge-researcher/SKILL.md",
+        "name": "知识检索专家 — 瑞卡（Rika）"
+      },
+      {
+        "file": "data-scientist/SKILL.md",
+        "name": "数据科学工程师 — 赛奇（Sage）"
+      },
+      {
+        "file": "dashboard-designer/SKILL.md",
+        "name": "可视化分析设计师 — 达仕（Dash）"
+      },
+      {
+        "file": "copilot-team-lead/SKILL.md",
+        "name": "智数分析专家团 - 主理人诺亚（Nova）"
+      }
+    ]
+  },
+  {
+    "id": "aicoding-architecture-expert-skills",
+    "name": "AICoding 架构专家团 - 齐构成",
+    "description": "Orchestrates a multi-role architecture delivery workflow that turns project inputs into staged AICoding architecture documents with explicit phase gates.",
+    "version": "7275ffcbf319",
+    "members": [],
+    "resources": [
+      {
+        "file": "skills/xlsx/SKILL.md",
+        "name": "XLSX creation, editing, and analysis"
+      },
+      {
+        "file": "skills/tech-research-advisor/SKILL.md",
+        "name": "技术选型顾问"
+      },
+      {
+        "file": "skills/tcloud-arch-diagram/SKILL.md",
+        "name": "系统架构图绘制 · AI 操作手册"
+      },
+      {
+        "file": "skills/pptx/SKILL.md",
+        "name": "PPTX Skill"
+      },
+      {
+        "file": "skills/pdf/SKILL.md",
+        "name": "PDF Processing Guide"
+      },
+      {
+        "file": "skills/docx/SKILL.md",
+        "name": "DOCX creation, editing, and analysis"
+      },
+      {
+        "file": "skills/diagrams-generator/SKILL.md",
+        "name": "Diagrams Generator"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/SKILL.md",
+        "name": "AICoding Team Bootstrap"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/UserStory.md",
+        "name": "AICoding 架构设计 · UserStory"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/material_digest.md",
+        "name": "AICoding 架构设计 · 资料摘要"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/research_report.md",
+        "name": "AICoding 架构设计 · 行业调研报告"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/安全设计.md",
+        "name": "AICoding 架构设计 · 安全设计"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/系统设计.md",
+        "name": "AICoding 架构设计 · 系统设计"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/部署设计.md",
+        "name": "AICoding 架构设计 · 部署设计"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/templates/高层架构设计.md",
+        "name": "AICoding 架构设计 · 高层架构设计"
+      },
+      {
+        "file": "skills/aicoding-team-bootstrap/protocols/intermediate_confirmation.md",
+        "name": "阶段内中间确认协议（Intermediate Confirmation Protocol）"
+      },
+      {
+        "file": "skills/CloudQ/SKILL.md",
+        "name": "🦞 CloudQ — 全球首款 ITOM \"领域虾\""
+      },
+      {
+        "file": "agents/aicoding-architecture-expert-team-lead.md",
+        "name": "AICoding 架构专家团 - 齐构成"
+      },
+      {
+        "file": "agents/business-architect.md",
+        "name": "业务架构师 - 许边界"
+      },
+      {
+        "file": "agents/knowledge-ingest-engineer.md",
+        "name": "知识摄入工程师 - 闻资料"
+      },
+      {
+        "file": "agents/platform-architect.md",
+        "name": "部署架构师 - 毕落地"
+      },
+      {
+        "file": "agents/product-story-designer.md",
+        "name": "产品故事师 - 顾全景"
+      },
+      {
+        "file": "agents/research-analyst.md",
+        "name": "研究分析师 - 查有据"
+      },
+      {
+        "file": "agents/security-architect.md",
+        "name": "安全架构师 - 严守正"
+      },
+      {
+        "file": "agents/system-architect.md",
+        "name": "系统架构师 - 高见远"
+      }
+    ]
+  },
+  {
+    "id": "career-dev-skills",
+    "name": "职业发展专家团 · 主理人（向前 · 职业发展总监）",
+    "description": "职业发展专家团主理人（向前 · 职业发展总监）。调度 5 位专业成员（cv-auditor、interview-coach、offer-evaluator、salary-negotiator、path-planner）按 5 阶段 SOP 完成交付。 触发词：\"我需要一个专家团\"。",
+    "version": "83295e027aef",
+    "members": [
+      {
+        "id": "cv-auditor",
+        "name": "cv-auditor",
+        "file": "cv-auditor.md"
+      },
+      {
+        "id": "interview-coach",
+        "name": "interview-coach",
+        "file": "interview-coach.md"
+      },
+      {
+        "id": "offer-evaluator",
+        "name": "offer-evaluator",
+        "file": "offer-evaluator.md"
+      },
+      {
+        "id": "salary-negotiator",
+        "name": "salary-negotiator",
+        "file": "salary-negotiator.md"
+      },
+      {
+        "id": "path-planner",
+        "name": "path-planner",
+        "file": "path-planner.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "cv-auditor.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "interview-coach.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "offer-evaluator.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "path-planner.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "salary-negotiator.md",
+        "name": "核心能力"
+      }
+    ]
+  },
+  {
+    "id": "chatlaw-skills",
+    "name": "中文法律咨询团 · 主理人（林律师）",
+    "description": "中文法律咨询团主理人（林律师）。协调 5 位专业成员（info-intake、legal-research、case-precedent、advice-writer、report-finalizer）按 4 阶段 SOP（案情采集 → 法律研究 → 综合建议 → 咨询报告终稿）完成高质量中文法律咨询。当用户提出民事、婚姻家庭、合同、劳动、侵权等高频法律咨询需求时触发。输出专业的 MD 格式法律咨询报告并落盘到本地。",
+    "version": "3024b3b322a9",
+    "members": [],
+    "resources": [
+      {
+        "file": "chatlaw-advice-writer.md",
+        "name": "钱顾问（Adam） · 法律建议撰写人"
+      },
+      {
+        "file": "chatlaw-case-precedent.md",
+        "name": "沈判官（Cara） · 判例研究员"
+      },
+      {
+        "file": "chatlaw-info-intake.md",
+        "name": "方助理（Iris） · 信息采集助理"
+      },
+      {
+        "file": "chatlaw-legal-research.md",
+        "name": "周法官（Rex） · 法条研究员"
+      },
+      {
+        "file": "chatlaw-report-finalizer.md",
+        "name": "苏文书（Fiona） · 咨询报告终稿人"
+      }
+    ]
+  },
+  {
+    "id": "citongshuopro-skills",
+    "name": "刺桐说Pro-投资社群嘉宾团 - 主理人",
+    "description": "Citongshuo Pro community manager, responsible for routing investment questions to the most suitable guest experts (zhanglaoshi/jiazong/littlestar/gy) and coordinating multi-expert collaboration for complex questions.",
+    "version": "23106ea5fbf0",
+    "members": [],
+    "resources": [
+      {
+        "file": "gy.md",
+        "name": "GY - 债券与宏观分析"
+      },
+      {
+        "file": "jiazong.md",
+        "name": "佳总 - 行业周期趋势投资"
+      },
+      {
+        "file": "littlestar.md",
+        "name": "LittleStar - 游资超短线交易"
+      },
+      {
+        "file": "zhanglaoshi.md",
+        "name": "张老师 - 财务价值投资"
+      }
+    ]
+  },
+  {
+    "id": "content-distribution-skills",
+    "name": "全域内容分发专家团 - 主理人（安拓 / Atlas）",
+    "description": "全域内容分发专家团主理人技能。统筹全域内容分发策略制定、团队调度和综合报告产出。 触发词：内容分发、多平台发布、分发策略、全流程分发、团队调度",
+    "version": "a97eea200b28",
+    "members": [
+      {
+        "id": "domestic-platform-expert",
+        "name": "domestic-platform-expert",
+        "file": "agents/domestic-platform-expert/SKILL.md"
+      },
+      {
+        "id": "international-platform-expert",
+        "name": "international-platform-expert",
+        "file": "agents/international-platform-expert/SKILL.md"
+      },
+      {
+        "id": "scheduling-specialist",
+        "name": "scheduling-specialist",
+        "file": "agents/scheduling-specialist/SKILL.md"
+      },
+      {
+        "id": "distribution-analyst",
+        "name": "distribution-analyst",
+        "file": "agents/distribution-analyst/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "skills/xiaohongshu/SKILL.md",
+        "name": "小红书自动化助手"
+      },
+      {
+        "file": "skills/wechat-article-search/SKILL.md",
+        "name": "微信公众号文章搜索技能"
+      },
+      {
+        "file": "skills/multi-platform-distribution/SKILL.md",
+        "name": "多平台内容分发技能包"
+      },
+      {
+        "file": "skills/mp-draft-push/SKILL.md",
+        "name": "微信公众号草稿箱发布技能"
+      },
+      {
+        "file": "skills/libtv-skill/SKILL.md",
+        "name": "AI 素材生成技能包"
+      },
+      {
+        "file": "skills/humanizer/SKILL.md",
+        "name": "Humanizer: Remove AI Writing Patterns"
+      },
+      {
+        "file": "leads/SKILL.md",
+        "name": "全域内容分发专家团 - 主理人（安拓 / Atlas）"
+      },
+      {
+        "file": "agents/scheduling-specialist/SKILL.md",
+        "name": "排期运营专家 - 凯历 (Calendar)"
+      },
+      {
+        "file": "agents/international-platform-expert/SKILL.md",
+        "name": "国际平台专家 - 格罗 (Glow)"
+      },
+      {
+        "file": "agents/domestic-platform-expert/SKILL.md",
+        "name": "国内平台专家 - 晓红 (Ruby)"
+      },
+      {
+        "file": "agents/distribution-analyst/SKILL.md",
+        "name": "分发数据分析师 - 达维 (Davis)"
+      }
+    ]
+  },
+  {
+    "id": "content-monetization-skills",
+    "name": "内容变现商业化专家团 - 主理人技能",
+    "description": "内容变现商业化专家团 主理人技能",
+    "version": "c473d03ee4fb",
+    "members": [
+      {
+        "id": "cps-specialist",
+        "name": "cps-specialist",
+        "file": "skills/cps-specialist.md"
+      },
+      {
+        "id": "cpe-cpm-expert",
+        "name": "cpe-cpm-expert",
+        "file": "skills/cpe-cpm-expert.md"
+      },
+      {
+        "id": "marketplace-operator",
+        "name": "marketplace-operator",
+        "file": "skills/marketplace-operator.md"
+      },
+      {
+        "id": "revenue-analyst",
+        "name": "revenue-analyst",
+        "file": "skills/revenue-analyst.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "skills/content-monetization-team-lead.md",
+        "name": "内容变现商业化专家团 - 主理人技能"
+      },
+      {
+        "file": "skills/cpe-cpm-expert.md",
+        "name": "效果广告专家 - 艾菲(Effect) 技能"
+      },
+      {
+        "file": "skills/cps-specialist.md",
+        "name": "CPS 佣金专家 - 赛勒(Seller) 技能"
+      },
+      {
+        "file": "skills/marketplace-operator.md",
+        "name": "商务合作顾问 - 麦奇(Match) 技能"
+      },
+      {
+        "file": "skills/revenue-analyst.md",
+        "name": "收益分析师 - 普罗(Profit) 技能"
+      },
+      {
+        "file": "skills/content-monetization-ops/SKILL.md",
+        "name": "内容变现商业化技能包"
+      }
+    ]
+  },
+  {
+    "id": "design-engine-skills",
+    "name": "设计原型专家团 · 主理人画统筹（Hua）",
+    "description": "设计原型专家团主理人 - 编排 5 位专业角色按 SOP 完成品牌级设计产出",
+    "version": "11eccea32578",
+    "members": [
+      {
+        "id": "discovery-analyst",
+        "name": "需求发现分析师",
+        "file": "discovery-analyst/SKILL.md"
+      },
+      {
+        "id": "design-system-expert",
+        "name": "设计系统专家",
+        "file": "design-system-expert/SKILL.md"
+      },
+      {
+        "id": "prototype-builder",
+        "name": "原型构建师",
+        "file": "prototype-builder/SKILL.md"
+      },
+      {
+        "id": "critique-reviewer",
+        "name": "质量审查官",
+        "file": "critique-reviewer/SKILL.md"
+      },
+      {
+        "id": "export-specialist",
+        "name": "导出交付专家",
+        "file": "export-specialist/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "prototype-builder/SKILL.md",
+        "name": "原型构建师 · 筑原型（Prototype Builder）"
+      },
+      {
+        "file": "export-specialist/SKILL.md",
+        "name": "导出交付专家 · 交付达（Export Specialist）"
+      },
+      {
+        "file": "discovery-analyst/SKILL.md",
+        "name": "需求发现分析师 · 许明需（Discovery Analyst）"
+      },
+      {
+        "file": "design-system-expert/SKILL.md",
+        "name": "设计系统专家 · 彩格调（Design System Expert）"
+      },
+      {
+        "file": "design-engine-team-lead/SKILL.md",
+        "name": "设计原型专家团 · 主理人画统筹（Hua）"
+      },
+      {
+        "file": "critique-reviewer/SKILL.md",
+        "name": "质量审查官 · 严过审（Critique Reviewer）"
+      }
+    ]
+  },
+  {
+    "id": "engineering-assurance-skills",
+    "name": "工程保障团队 - 主理人",
+    "description": "工程保障团队主理人（甄宇航 · 工程督导）。编排和协调 5 位专业成员（代码审查师、系统架构师、SRE 工程师、测试专家、技术文档师）完成代码审查、系统设计、事故响应、部署前检查和技术债评估等工作流，汇编输出结构化工程保障报告。",
+    "version": "3e98ecdeae06",
+    "members": [
+      {
+        "id": "code-reviewer",
+        "name": "科迪（Cody） · 代码审查师（Code Reviewer）",
+        "file": "skills/code-reviewer/SKILL.md"
+      },
+      {
+        "id": "architect",
+        "name": "阿奇（Archi） · 系统架构师（System Architect）",
+        "file": "skills/architect/SKILL.md"
+      },
+      {
+        "id": "sre-engineer",
+        "name": "雷克斯（Rex） · SRE 工程师（SRE Engineer）",
+        "file": "skills/sre-engineer/SKILL.md"
+      },
+      {
+        "id": "testing-expert",
+        "name": "泰莎（Tessa） · 测试专家（Testing Expert）",
+        "file": "skills/testing-expert/SKILL.md"
+      },
+      {
+        "id": "tech-writer",
+        "name": "多库（Docu） · 技术文档师（Technical Writer）",
+        "file": "skills/tech-writer/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "skills/testing-expert/SKILL.md",
+        "name": "测试专家"
+      },
+      {
+        "file": "skills/tech-writer/SKILL.md",
+        "name": "技术文档师"
+      },
+      {
+        "file": "skills/sre-engineer/SKILL.md",
+        "name": "SRE 工程师"
+      },
+      {
+        "file": "skills/engineering-director/SKILL.md",
+        "name": "工程保障团队 - 主理人"
+      },
+      {
+        "file": "skills/code-reviewer/SKILL.md",
+        "name": "代码审查师"
+      },
+      {
+        "file": "skills/architect/SKILL.md",
+        "name": "系统架构师"
+      }
+    ]
+  },
+  {
+    "id": "enterprise-legal-skills",
+    "name": "企业法务专家团 · 主理人（法衡中）",
+    "description": "企业法务专家团主理人（法衡中）。协调 8 位专业成员（商业合同、公司并购、劳动法、隐私数据、产品法务、监管合规、AI治理、知识产权）按预设工作流完成企业法务全流程审查。触发场景：供应商合同审查、产品发布合规、M&A 尽调、用工调查、监管政策分析、AI供应商风险管理等跨领域法务需求。",
+    "version": "f8f886e8c556",
+    "members": [
+      {
+        "id": "commercial-contracts-counsel",
+        "name": "commercial-contracts-counsel",
+        "file": "members/commercial-contracts-counsel/SKILL.md"
+      },
+      {
+        "id": "corporate-ma-counsel",
+        "name": "corporate-ma-counsel",
+        "file": "members/corporate-ma-counsel/SKILL.md"
+      },
+      {
+        "id": "employment-law-counsel",
+        "name": "employment-law-counsel",
+        "file": "members/employment-law-counsel/SKILL.md"
+      },
+      {
+        "id": "privacy-data-counsel",
+        "name": "privacy-data-counsel",
+        "file": "members/privacy-data-counsel/SKILL.md"
+      },
+      {
+        "id": "product-legal-counsel",
+        "name": "product-legal-counsel",
+        "file": "members/product-legal-counsel/SKILL.md"
+      },
+      {
+        "id": "regulatory-compliance-counsel",
+        "name": "regulatory-compliance-counsel",
+        "file": "members/regulatory-compliance-counsel/SKILL.md"
+      },
+      {
+        "id": "ai-governance-counsel",
+        "name": "ai-governance-counsel",
+        "file": "members/ai-governance-counsel/SKILL.md"
+      },
+      {
+        "id": "ip-portfolio-counsel",
+        "name": "ip-portfolio-counsel",
+        "file": "members/ip-portfolio-counsel/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "toolkits/china-legal-research/SKILL.md",
+        "name": "中国法条与案例检索"
+      },
+      {
+        "file": "toolkits/china-compliance-toolkit/SKILL.md",
+        "name": "中国企业法务本地化工具包"
+      },
+      {
+        "file": "members/regulatory-compliance-counsel/SKILL.md",
+        "name": "监管合规法律顾问"
+      },
+      {
+        "file": "members/product-legal-counsel/SKILL.md",
+        "name": "产品法律顾问"
+      },
+      {
+        "file": "members/privacy-data-counsel/SKILL.md",
+        "name": "隐私数据法律顾问"
+      },
+      {
+        "file": "members/ip-portfolio-counsel/SKILL.md",
+        "name": "知识产权法律顾问"
+      },
+      {
+        "file": "members/employment-law-counsel/SKILL.md",
+        "name": "劳动法律顾问"
+      },
+      {
+        "file": "members/corporate-ma-counsel/SKILL.md",
+        "name": "公司并购法律顾问"
+      },
+      {
+        "file": "members/commercial-contracts-counsel/SKILL.md",
+        "name": "商业合同法律顾问"
+      },
+      {
+        "file": "members/ai-governance-counsel/SKILL.md",
+        "name": "AI 治理法律顾问"
+      },
+      {
+        "file": "enterprise-legal-lead/SKILL.md",
+        "name": "企业法务专家团 · 主理人（法衡中）"
+      }
+    ]
+  },
+  {
+    "id": "family-advisor-skills",
+    "name": "家庭育儿专家团 · 主理人（林心 · 家庭育儿首席顾问）",
+    "description": "家庭育儿专家团主理人（林心 · 家庭育儿首席顾问）。调度 5 位专业成员（dev-assessor、behavior-coach、family-communicator、safety-health、activity-designer）按 4 阶段 SOP 完成交付。 触发词：\"我需要一个专家团\"。",
+    "version": "58788d8a3ef2",
+    "members": [
+      {
+        "id": "dev-assessor",
+        "name": "dev-assessor",
+        "file": "dev-assessor.md"
+      },
+      {
+        "id": "behavior-coach",
+        "name": "behavior-coach",
+        "file": "behavior-coach.md"
+      },
+      {
+        "id": "family-communicator",
+        "name": "family-communicator",
+        "file": "family-communicator.md"
+      },
+      {
+        "id": "safety-health",
+        "name": "safety-health",
+        "file": "safety-health.md"
+      },
+      {
+        "id": "activity-designer",
+        "name": "activity-designer",
+        "file": "activity-designer.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "activity-designer.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "behavior-coach.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "dev-assessor.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "family-communicator.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "safety-health.md",
+        "name": "核心能力"
+      }
+    ]
+  },
+  {
+    "id": "game-dev-studio-skillkit",
+    "name": "游戏开发工作室 - 主理人",
+    "description": "Activate when the user wants to build, design, engineer, or ship a game with a coordinated studio workflow — concept ideation, system design docs, architecture, sprint production, QA, polish, or release. You are the studio lead who routes work to specialist members and assembles the final delivery.",
+    "version": "f69d9d931cfa",
+    "members": [
+      {
+        "id": "design-strategist",
+        "name": "design-strategist",
+        "file": "agents/design-strategist.md"
+      },
+      {
+        "id": "engineering-lead",
+        "name": "engineering-lead",
+        "file": "agents/engineering-lead.md"
+      },
+      {
+        "id": "art-director",
+        "name": "art-director",
+        "file": "agents/art-director.md"
+      },
+      {
+        "id": "audio-director",
+        "name": "audio-director",
+        "file": "agents/audio-director.md"
+      },
+      {
+        "id": "quality-lead",
+        "name": "quality-lead",
+        "file": "agents/quality-lead.md"
+      },
+      {
+        "id": "release-ops-lead",
+        "name": "release-ops-lead",
+        "file": "agents/release-ops-lead.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "agents/art-director.md",
+        "name": "游戏美术与视觉表现指导"
+      },
+      {
+        "file": "agents/audio-director.md",
+        "name": "游戏音频与声效设计师"
+      },
+      {
+        "file": "agents/design-strategist.md",
+        "name": "游戏策划与叙事设计师"
+      },
+      {
+        "file": "agents/engineering-lead.md",
+        "name": "游戏技术与引擎工程师"
+      },
+      {
+        "file": "agents/game-development-studio-team-lead.md",
+        "name": "游戏开发工作室 - 主理人"
+      },
+      {
+        "file": "agents/quality-lead.md",
+        "name": "游戏质量保障与测试工程师"
+      },
+      {
+        "file": "agents/release-ops-lead.md",
+        "name": "游戏发布与运营管理师"
+      }
+    ]
+  },
+  {
+    "id": "gpt-researcher-skills",
+    "name": "深度研究团队 - 主理人",
+    "description": "深度研究团队主理人（顾全之 · 研究主编）。带领 6 位专业成员按 5 阶段工作流（初调→规划→逐章深研→报告组装→发布输出）完成系统性深度研究，输出带多源引用的专业研究报告。 触发词：深度研究、行业研究、竞品分析、市场调研、学术综述、出一份研究报告、专题研究、趋势分析、技术综述。",
+    "version": "e60330134b05",
+    "members": [
+      {
+        "id": "research-planner",
+        "name": "季要纲",
+        "file": "research-planner/SKILL.md"
+      },
+      {
+        "id": "topic-researcher",
+        "name": "谭溯源",
+        "file": "topic-researcher/SKILL.md"
+      },
+      {
+        "id": "draft-reviewer",
+        "name": "明鉴秋",
+        "file": "draft-reviewer/SKILL.md"
+      },
+      {
+        "id": "draft-reviser",
+        "name": "任润泽",
+        "file": "draft-reviser/SKILL.md"
+      },
+      {
+        "id": "report-writer",
+        "name": "程文成",
+        "file": "report-writer/SKILL.md"
+      },
+      {
+        "id": "report-publisher",
+        "name": "傅梓铭",
+        "file": "report-publisher/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "topic-researcher/SKILL.md",
+        "name": "课题研究员 — 谭溯源（Tan Suyuan）"
+      },
+      {
+        "file": "research-planner/SKILL.md",
+        "name": "研究编辑 — 季要纲（Ji Yaogang）"
+      },
+      {
+        "file": "research-chief-editor/SKILL.md",
+        "name": "深度研究团队 - 主理人"
+      },
+      {
+        "file": "report-writer/SKILL.md",
+        "name": "报告撰写人 — 程文成（Cheng Wencheng）"
+      },
+      {
+        "file": "report-publisher/SKILL.md",
+        "name": "报告发布员 — 傅梓铭（Fu Ziming）"
+      },
+      {
+        "file": "draft-reviser/SKILL.md",
+        "name": "内容修订员 — 任润泽（Ren Runze）"
+      },
+      {
+        "file": "draft-reviewer/SKILL.md",
+        "name": "草稿审稿人 — 明鉴秋（Ming Jianqiu）"
+      }
+    ]
+  },
+  {
+    "id": "health-coach-skills",
+    "name": "健康教练专家团 · 主理人（康宁 · 首席健康教练）",
+    "description": "健康教练专家团主理人（康宁 · 首席健康教练）。调度 5 位专业成员（health-intake、nutritionist、fitness-coach、sleep-advisor、progress-tracker）按 4 阶段 SOP 完成交付。 触发词：\"我需要一个专家团\"。",
+    "version": "94bcb45bd2c0",
+    "members": [
+      {
+        "id": "health-intake",
+        "name": "health-intake",
+        "file": "health-intake.md"
+      },
+      {
+        "id": "nutritionist",
+        "name": "nutritionist",
+        "file": "nutritionist.md"
+      },
+      {
+        "id": "fitness-coach",
+        "name": "fitness-coach",
+        "file": "fitness-coach.md"
+      },
+      {
+        "id": "sleep-advisor",
+        "name": "sleep-advisor",
+        "file": "sleep-advisor.md"
+      },
+      {
+        "id": "progress-tracker",
+        "name": "progress-tracker",
+        "file": "progress-tracker.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "fitness-coach.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "health-intake.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "nutritionist.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "progress-tracker.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "sleep-advisor.md",
+        "name": "核心能力"
+      }
+    ]
+  },
+  {
+    "id": "hr-operations-skills",
+    "name": "HR 运营团队 - 主理人",
+    "description": "HR 运营团队主理人（任贤达 · 人事总监）。调度猎达（招聘专家）、薪析（薪酬分析师）、组织（组织发展顾问）、入职（HR 运营专员）4 位专业成员，按标准工作流完成招聘全流程、绩效评估周期、组织规划、人员分析报告和政策咨询等任务。 触发词：招聘、面试方案、Offer 起草、入职计划、薪酬分析、薪酬对标、组织规划、Headcount、绩效评估、人员分析、政策咨询、 招人、招聘流程、要招一个人、发 Offer、入职引导、新人入职、工资给多少、组织结构、团队扩张、绩效、考核、HP、晋升、 校准、自评、人员报告、流失分析、留存率、考勤政策、年假、休假规定。",
+    "version": "99e5954c45e6",
+    "members": [],
+    "resources": [
+      {
+        "file": "hr-comp-analyst-SKILL.md",
+        "name": "薪析（Payla）· 薪酬分析师（Compensation Analyst）"
+      },
+      {
+        "file": "hr-hr-ops-SKILL.md",
+        "name": "入职（Onboard）· HR 运营专员（HR Operations）"
+      },
+      {
+        "file": "hr-org-developer-SKILL.md",
+        "name": "组织（Orga）· 组织发展专家（Organization Developer）"
+      },
+      {
+        "file": "hr-playbook-SKILL.md",
+        "name": "HR 运营团队手册（HR Playbook，增强版）"
+      },
+      {
+        "file": "hr-recruiter-SKILL.md",
+        "name": "猎达（Hunter）· 招聘专家（Recruiter）"
+      }
+    ]
+  },
+  {
+    "id": "huashu-data-pro-skills",
+    "name": "花叔数据分析专家团 · 主理人（数据洞察总监）",
+    "description": "花叔数据分析专家团主理人（数据洞察总监）。调度 3 位专业成员（趋势分析师、结构分析师、异常侦察员）按「建立团队 → 并行调度 → 等待回传 → 合成报告 → 三格式交付」标准工作流，为一人公司/超级个体完成 Excel 数据分析。输出 HTML / XLSX / PPTX 三种格式的综合分析报告。",
+    "version": "ed10b6068407",
+    "members": [
+      {
+        "id": "trend-analyst",
+        "name": "trend-analyst",
+        "file": "trend-analyst/SKILL.md"
+      },
+      {
+        "id": "structure-analyst",
+        "name": "structure-analyst",
+        "file": "structure-analyst/SKILL.md"
+      },
+      {
+        "id": "anomaly-analyst",
+        "name": "anomaly-analyst",
+        "file": "anomaly-analyst/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "visualization-expert/SKILL.md",
+        "name": "视灵 · 数据可视化师"
+      },
+      {
+        "file": "trend-analyst/SKILL.md",
+        "name": "花叔数据分析专家团 · 趋势分析师"
+      },
+      {
+        "file": "time-series-analyst/SKILL.md",
+        "name": "时序 · 时间序列分析师"
+      },
+      {
+        "file": "structure-analyst/SKILL.md",
+        "name": "花叔数据分析专家团 · 结构分析师"
+      },
+      {
+        "file": "statistical-analyst/SKILL.md",
+        "name": "统先 · 统计分析师"
+      },
+      {
+        "file": "sql-data-engineer/SKILL.md",
+        "name": "查迅 · SQL 数据工程师"
+      },
+      {
+        "file": "ml-engineer/SKILL.md",
+        "name": "机智 · 机器学习工程师"
+      },
+      {
+        "file": "huashu-data-pro-team-lead/SKILL.md",
+        "name": "花叔数据分析专家团 · 主理人（数据洞察总监）"
+      },
+      {
+        "file": "data-cleaning-specialist/SKILL.md",
+        "name": "净凡 · 数据清洗师"
+      },
+      {
+        "file": "data-analyst-team-lead/SKILL.md",
+        "name": "花叔数据分析专家团 · 主理人"
+      },
+      {
+        "file": "business-intelligence/SKILL.md",
+        "name": "商明 · 商业智能分析师"
+      },
+      {
+        "file": "anomaly-analyst/SKILL.md",
+        "name": "花叔数据分析专家团 · 异常侦察员"
+      },
+      {
+        "file": "a-b-testing-specialist/SKILL.md",
+        "name": "验效 · A/B 测试专家"
+      }
+    ]
+  },
+  {
+    "id": "humanize-ppt-skills",
+    "name": "Humanize PPT",
+    "description": "AST-based outline director for human-centered AI presentation workflows. Use before generating PPT/HTML slides from raw material.",
+    "version": "2c304bf6f762",
+    "members": [],
+    "resources": [
+      {
+        "file": "remotion-video-toolkit/SKILL.md",
+        "name": "Remotion Video Toolkit"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/3d.md",
+        "name": "Using Three.js and React Three Fiber in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/animations.md",
+        "name": "animations"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/assets.md",
+        "name": "Importing assets in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/audio.md",
+        "name": "Using audio in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/calculate-metadata.md",
+        "name": "Using calculateMetadata"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/can-decode.md",
+        "name": "Checking if a video can be decoded"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/charts.md",
+        "name": "Charts in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/compositions.md",
+        "name": "Default Props"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/display-captions.md",
+        "name": "Displaying captions in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/extract-frames.md",
+        "name": "Extracting frames from videos"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/fonts.md",
+        "name": "Using fonts in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/get-audio-duration.md",
+        "name": "Getting audio duration with Mediabunny"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/get-video-dimensions.md",
+        "name": "Getting video dimensions with Mediabunny"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/get-video-duration.md",
+        "name": "Getting video duration with Mediabunny"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/gifs.md",
+        "name": "Using Animated images in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/images.md",
+        "name": "Using images in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/import-srt-captions.md",
+        "name": "Importing .srt subtitles into Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/lottie.md",
+        "name": "Using Lottie Animations in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/measuring-dom-nodes.md",
+        "name": "Measuring DOM nodes in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/measuring-text.md",
+        "name": "Measuring text in Remotion"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/rendering.md",
+        "name": "Rendering Videos"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/sequencing.md",
+        "name": "Premounting"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/tailwind.md",
+        "name": "tailwind"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/text-animations.md",
+        "name": "Text animations"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/timing.md",
+        "name": "Spring animations"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/transcribe-captions.md",
+        "name": "Transcribing audio"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/transitions.md",
+        "name": "Fullscreen transitions"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/trimming.md",
+        "name": "Trim the Beginning"
+      },
+      {
+        "file": "remotion-video-toolkit/rules/videos.md",
+        "name": "Using videos in Remotion"
+      },
+      {
+        "file": "humanize-ppt/AST-theory.md",
+        "name": "AST Theory"
+      },
+      {
+        "file": "humanize-ppt/OPC-workflow.md",
+        "name": "OPC Workflow"
+      },
+      {
+        "file": "humanize-ppt/SKILL.md",
+        "name": "Humanize PPT"
+      },
+      {
+        "file": "humanize-ppt/agent-teams.md",
+        "name": "Humanize PPT Agent Teams"
+      },
+      {
+        "file": "humanize-ppt/index.md",
+        "name": "Humanize PPT"
+      },
+      {
+        "file": "humanize-ppt/presenter-adapter.md",
+        "name": "Presenter Adapter"
+      },
+      {
+        "file": "humanize-ppt/router-rules.md",
+        "name": "Router Rules"
+      },
+      {
+        "file": "humanize-ppt/contracts/asset-manifest.template.md",
+        "name": "Asset Manifest"
+      },
+      {
+        "file": "humanize-ppt/contracts/ast-outline.schema.md",
+        "name": "AST Outline Schema"
+      },
+      {
+        "file": "humanize-ppt/contracts/deck-brief.template.md",
+        "name": "Deck Brief"
+      },
+      {
+        "file": "humanize-ppt/contracts/speaker-intent.template.md",
+        "name": "Speaker Intent"
+      },
+      {
+        "file": "humanize-ppt/adapters/guizang-bridge-notes.md",
+        "name": "Guizang Bridge Notes"
+      },
+      {
+        "file": "humanize-ppt/adapters/presenter-adapter-spec.md",
+        "name": "Presenter Adapter"
+      },
+      {
+        "file": "humanize-ppt/adapters/zara-bridge-notes.md",
+        "name": "Zara Bridge Notes"
+      },
+      {
+        "file": "html-ppt/SKILL.md",
+        "name": "html-ppt — HTML PPT Studio"
+      },
+      {
+        "file": "guizang-ppt-skill/SKILL.md",
+        "name": "Magazine Web Ppt"
+      },
+      {
+        "file": "frontend-slides/SKILL.md",
+        "name": "Frontend Slides"
+      },
+      {
+        "file": "frontend-slides/STYLE_PRESETS.md",
+        "name": "Style Presets Reference"
+      },
+      {
+        "file": "frontend-slides/animation-patterns.md",
+        "name": "Animation Patterns Reference"
+      },
+      {
+        "file": "frontend-slides/html-template.md",
+        "name": "HTML Presentation Template"
+      }
+    ]
+  },
+  {
+    "id": "investment-masters-skills",
+    "name": "AI 对冲基金投资大师专家团 — 主理人",
+    "description": "AI 对冲基金投资大师专家团主理人（贺知衡 · 基金经理）。调度 21 位专业成员（13 位传奇投资哲学家 + 6 位专业分析师 + 2 位管理层）按 SOP 完成系统性投资分析。 触发词：投资分析、股票分析、大师分析、巴菲特怎么看、多大师分析、对冲基金分析、 投资大师、价值投资、成长投资、全面分析、深度投资分析、基金分析、 该不该买、值不值得投资、投资价值、帮我分析、多维度分析、全方位评估。",
+    "version": "4e6264f3efef",
+    "members": [
+      {
+        "id": "oracle-of-omaha",
+        "name": "oracle-of-omaha",
+        "file": "oracle-of-omaha/SKILL.md"
+      },
+      {
+        "id": "charlie-munger",
+        "name": "charlie-munger",
+        "file": "charlie-munger/SKILL.md"
+      },
+      {
+        "id": "magellan-captain",
+        "name": "magellan-captain",
+        "file": "magellan-captain/SKILL.md"
+      },
+      {
+        "id": "the-big-short",
+        "name": "the-big-short",
+        "file": "the-big-short/SKILL.md"
+      },
+      {
+        "id": "black-swan-prophet",
+        "name": "black-swan-prophet",
+        "file": "black-swan-prophet/SKILL.md"
+      },
+      {
+        "id": "mama-wood",
+        "name": "mama-wood",
+        "file": "mama-wood/SKILL.md"
+      },
+      {
+        "id": "ben-graham",
+        "name": "ben-graham",
+        "file": "ben-graham/SKILL.md"
+      },
+      {
+        "id": "wall-street-activist",
+        "name": "wall-street-activist",
+        "file": "wall-street-activist/SKILL.md"
+      },
+      {
+        "id": "macro-king",
+        "name": "macro-king",
+        "file": "macro-king/SKILL.md"
+      },
+      {
+        "id": "dhandho-master",
+        "name": "dhandho-master",
+        "file": "dhandho-master/SKILL.md"
+      },
+      {
+        "id": "phil-fisher",
+        "name": "phil-fisher",
+        "file": "phil-fisher/SKILL.md"
+      },
+      {
+        "id": "dean-of-valuation",
+        "name": "dean-of-valuation",
+        "file": "dean-of-valuation/SKILL.md"
+      },
+      {
+        "id": "rakesh-jhunjhunwala",
+        "name": "rakesh-jhunjhunwala",
+        "file": "rakesh-jhunjhunwala/SKILL.md"
+      },
+      {
+        "id": "technicals-analyst",
+        "name": "technicals-analyst",
+        "file": "technicals-analyst/SKILL.md"
+      },
+      {
+        "id": "valuation-analyst",
+        "name": "valuation-analyst",
+        "file": "valuation-analyst/SKILL.md"
+      },
+      {
+        "id": "growth-analyst",
+        "name": "growth-analyst",
+        "file": "growth-analyst/SKILL.md"
+      },
+      {
+        "id": "news-sentiment-analyst",
+        "name": "news-sentiment-analyst",
+        "file": "news-sentiment-analyst/SKILL.md"
+      },
+      {
+        "id": "portfolio-manager",
+        "name": "portfolio-manager",
+        "file": "portfolio-manager/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "wall-street-activist/SKILL.md",
+        "name": "华尔街斗牛士 — 比尔·阿克曼（Bill Ackman）"
+      },
+      {
+        "file": "valuation-analyst/SKILL.md",
+        "name": "估值分析师"
+      },
+      {
+        "file": "the-big-short/SKILL.md",
+        "name": "大空头 — 迈克尔·伯里（Michael Burry）"
+      },
+      {
+        "file": "technicals-analyst/SKILL.md",
+        "name": "技术面分析师"
+      },
+      {
+        "file": "rakesh-jhunjhunwala/SKILL.md",
+        "name": "金君瓦拉 — 拉凯什·金君瓦拉（Rakesh Jhunjhunwala）"
+      },
+      {
+        "file": "portfolio-manager/SKILL.md",
+        "name": "投资组合经理（Portfolio Manager）"
+      },
+      {
+        "file": "phil-fisher/SKILL.md",
+        "name": "费雪 — 菲利普·费雪（Philip Fisher）"
+      },
+      {
+        "file": "oracle-of-omaha/SKILL.md",
+        "name": "奥马哈先知 — 沃伦·巴菲特（Warren Buffett）"
+      },
+      {
+        "file": "news-sentiment-analyst/SKILL.md",
+        "name": "新闻情绪分析师"
+      },
+      {
+        "file": "mama-wood/SKILL.md",
+        "name": "木头姐 — 凯茜·伍德（Cathie Wood）"
+      },
+      {
+        "file": "magellan-captain/SKILL.md",
+        "name": "麦哲伦舵手 — 彼得·林奇（Peter Lynch）"
+      },
+      {
+        "file": "macro-king/SKILL.md",
+        "name": "宏观之王 — 斯坦利·德鲁肯米勒（Stanley Druckenmiller）"
+      },
+      {
+        "file": "hedge-fund-lead/SKILL.md",
+        "name": "AI 对冲基金投资大师专家团 — 主理人"
+      },
+      {
+        "file": "growth-analyst/SKILL.md",
+        "name": "成长分析师"
+      },
+      {
+        "file": "dhandho-master/SKILL.md",
+        "name": "Dhandho 掌门 — 莫尼什·帕布莱（Moneesh Pabrai）"
+      },
+      {
+        "file": "dean-of-valuation/SKILL.md",
+        "name": "估值教父 — 阿斯沃斯·达摩达兰（Aswath Damodaran）"
+      },
+      {
+        "file": "charlie-munger/SKILL.md",
+        "name": "芒格 — 查理·芒格（Charlie Munger）"
+      },
+      {
+        "file": "black-swan-prophet/SKILL.md",
+        "name": "黑天鹅之父 — 纳西姆·塔勒布（Nassim Taleb）"
+      },
+      {
+        "file": "ben-graham/SKILL.md",
+        "name": "格雷厄姆 — 本杰明·格雷厄姆（Benjamin Graham）"
+      }
+    ]
+  },
+  {
+    "id": "invoice-verify-skills",
+    "name": "智能发票专家团首席专家",
+    "description": "Intelligent invoice chief expert responsible for task intake, orchestration, dispatch, and result consolidation.",
+    "version": "0351cc5ec65f",
+    "members": [],
+    "resources": [
+      {
+        "file": "overview.md",
+        "name": "智能发票专家团 Skill 文档集 - 生成完毕"
+      },
+      {
+        "file": "agents/archivist.md",
+        "name": "百晓慧"
+      },
+      {
+        "file": "agents/counterparty-risk-analyst.md",
+        "name": "百晓信"
+      },
+      {
+        "file": "agents/invoice-sorter.md",
+        "name": "百晓甄"
+      },
+      {
+        "file": "agents/invoice-verifier.md",
+        "name": "百晓燕"
+      },
+      {
+        "file": "agents/invoice-verify-team-lead.md",
+        "name": "智能发票专家团首席专家"
+      }
+    ]
+  },
+  {
+    "id": "ket-prep-skills",
+    "name": "KET备考专家团 — 主理人（柯全排）",
+    "description": "KET备考专家团 — 主理人（柯全排）",
+    "version": "6e2480888f3e",
+    "members": [
+      {
+        "id": "ket-strategist",
+        "name": "策准衡",
+        "file": "ket-strategist.md"
+      },
+      {
+        "id": "ket-foundation-builder",
+        "name": "纪基础",
+        "file": "ket-foundation-builder.md"
+      },
+      {
+        "id": "ket-input-master",
+        "name": "闻听入",
+        "file": "ket-input-master.md"
+      },
+      {
+        "id": "ket-output-coach",
+        "name": "言书成",
+        "file": "ket-output-coach.md"
+      },
+      {
+        "id": "ket-tactician",
+        "name": "临试章",
+        "file": "ket-tactician.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "ket-foundation-builder.md",
+        "name": "KET词汇语法专家 — 纪基础"
+      },
+      {
+        "file": "ket-input-master.md",
+        "name": "KET听力阅读输入导师 — 闻听入"
+      },
+      {
+        "file": "ket-output-coach.md",
+        "name": "KET口语写作输出教练 — 言书成"
+      },
+      {
+        "file": "ket-strategist.md",
+        "name": "KET备考策略师 — 策准衡"
+      },
+      {
+        "file": "ket-tactician.md",
+        "name": "KET临考战术师 — 临试章"
+      }
+    ]
+  },
+  {
+    "id": "makers-skills",
+    "name": "Makers 开发专家团 - 主理人 齐上线",
+    "description": "Makers 开发专家团主理人 Skill — 协调前端、后端、AI Agent 三位专业成员， 在 EdgeOne Makers 平台上完成 Web 全栈开发与部署任务。 触发词：全栈开发、搭建并部署、帮我做一个 Web 应用、EdgeOne Makers 项目、 在 EdgeOne 上开发、一站式交付。",
+    "version": "641721c411d0",
+    "members": [],
+    "resources": [
+      {
+        "file": "team-lead/SKILL.md",
+        "name": "Makers 开发专家团 - 主理人 齐上线"
+      },
+      {
+        "file": "frontend/SKILL.md",
+        "name": "前端工程师 - 裴知页"
+      },
+      {
+        "file": "deploy/SKILL.md",
+        "name": "EdgeOne Makers 部署 Skill"
+      },
+      {
+        "file": "cli/SKILL.md",
+        "name": "EdgeOne Makers CLI 命令参考"
+      },
+      {
+        "file": "backend/SKILL.md",
+        "name": "后端工程师 - 范云申"
+      },
+      {
+        "file": "agent/SKILL.md",
+        "name": "AI Agent 工程师 - 智行远"
+      }
+    ]
+  },
+  {
+    "id": "marketing-campaign-skills",
+    "name": "营销战役团队 — 主理人",
+    "description": "营销战役团队主理人（江增量）。负责编排从内容创作到效果评估的全营销流程，调度 4 位专业成员按标准工作流完成交付。",
+    "version": "5dbf2a7b9798",
+    "members": [
+      {
+        "id": "content-creator",
+        "name": "笔达（Pen） · 内容创作师（Content Creator）",
+        "file": "skills/content-creator/SKILL.md"
+      },
+      {
+        "id": "campaign-planner",
+        "name": "策略（Camp） · 战役策划师（Campaign Planner）",
+        "file": "skills/campaign-planner/SKILL.md"
+      },
+      {
+        "id": "seo-expert",
+        "name": "优搜（Opti） · SEO 专家（SEO Expert）",
+        "file": "skills/seo-expert/SKILL.md"
+      },
+      {
+        "id": "brand-analyst",
+        "name": "品析（Brandi） · 品牌分析师（Brand Analyst）",
+        "file": "skills/brand-analyst/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "skills/seo-expert/SKILL.md",
+        "name": "优搜（Opti） — SEO 专家"
+      },
+      {
+        "file": "skills/marketing-playbook/SKILL.md",
+        "name": "营销战役团队手册 (Marketing Playbook)"
+      },
+      {
+        "file": "skills/marketing-director/SKILL.md",
+        "name": "营销战役团队 — 主理人"
+      },
+      {
+        "file": "skills/content-creator/SKILL.md",
+        "name": "笔达（Pen） — 内容创作者"
+      },
+      {
+        "file": "skills/campaign-planner/SKILL.md",
+        "name": "策略（Camp） — 战役策划师"
+      },
+      {
+        "file": "skills/brand-analyst/SKILL.md",
+        "name": "品析（Brandi） — 品牌分析师"
+      }
+    ]
+  },
+  {
+    "id": "mvp-dev-skills",
+    "name": "MVP 开发专家团 · 主理人（郝交付）",
+    "description": "MVP 开发专家团主理人（郝交付 · 交付总监）。统筹 7 位专家（PM/设计/架构/前端/后端/QA/运维）按 6 阶段 SOP 完成 MVP 产品交付。 触发词：\"帮我做个产品\"、\"MVP 开发\"、\"快速搭一个\"、\"做个 demo\"、\"从零搭建\"、\"做一个 XX 应用\"、\"帮我开发 XX\"。 路由逻辑：综合性产品开发任务走完整 SOP；单一维度需求（仅设计/仅后端/仅部署）可直调对应专家。",
+    "version": "013592da7b00",
+    "members": [
+      {
+        "id": "pm",
+        "name": "许清楚",
+        "file": "pm/SKILL.md"
+      },
+      {
+        "id": "designer",
+        "name": "颜好看",
+        "file": "designer/SKILL.md"
+      },
+      {
+        "id": "architect",
+        "name": "高见远",
+        "file": "architect/SKILL.md"
+      },
+      {
+        "id": "frontend",
+        "name": "贾思敏",
+        "file": "frontend/SKILL.md"
+      },
+      {
+        "id": "backend",
+        "name": "贝洛奇",
+        "file": "backend/SKILL.md"
+      },
+      {
+        "id": "qa",
+        "name": "严过关",
+        "file": "qa/SKILL.md"
+      },
+      {
+        "id": "devops",
+        "name": "卜宕机",
+        "file": "devops/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "qa/SKILL.md",
+        "name": "严过关 · 测试工程师（QA）"
+      },
+      {
+        "file": "pm/SKILL.md",
+        "name": "许清楚 · 产品经理（PM）"
+      },
+      {
+        "file": "mvp-dev-team-lead/SKILL.md",
+        "name": "MVP 开发专家团 · 主理人（郝交付）"
+      },
+      {
+        "file": "frontend/SKILL.md",
+        "name": "贾思敏 · 前端工程师（Frontend Lead）"
+      },
+      {
+        "file": "devops/SKILL.md",
+        "name": "卜宕机 · 运维工程师（DevOps）"
+      },
+      {
+        "file": "designer/SKILL.md",
+        "name": "颜好看 · UI/UX 设计师（Design Director）"
+      },
+      {
+        "file": "backend/SKILL.md",
+        "name": "贝洛奇 · 后端工程师（Backend Lead）"
+      },
+      {
+        "file": "architect/SKILL.md",
+        "name": "高见远 · 架构师（Chief Architect）"
+      }
+    ]
+  },
+  {
+    "id": "mvp-dev-skills-dsh",
+    "name": "MVP 开发专家团 · 主理人（郝交付）· dsh 原生版",
+    "description": "MVP 开发专家团主理人（郝交付 · 交付总监）· dsh 原生版。统筹 7 位专家（PM/设计/架构/前端/后端/QA/运维）按 6 阶段 SOP 完成 MVP 交付；成员调度改用 DeepSeek Harness 的 subagent/subagent_fork 工具 + send_message 中转 + 共享内存文件，WorkBuddy 的 TeamCreate/Agent/SendMessage 原语全部映射为 dsh 语义。",
+    "version": "d39d41f64ca8",
+    "members": [
+      {
+        "id": "pm",
+        "name": "许清楚",
+        "file": "pm/SKILL.md"
+      },
+      {
+        "id": "designer",
+        "name": "颜好看",
+        "file": "designer/SKILL.md"
+      },
+      {
+        "id": "architect",
+        "name": "高见远",
+        "file": "architect/SKILL.md"
+      },
+      {
+        "id": "frontend",
+        "name": "贾思敏",
+        "file": "frontend/SKILL.md"
+      },
+      {
+        "id": "backend",
+        "name": "贝洛奇",
+        "file": "backend/SKILL.md"
+      },
+      {
+        "id": "qa",
+        "name": "严过关",
+        "file": "qa/SKILL.md"
+      },
+      {
+        "id": "devops",
+        "name": "卜宕机",
+        "file": "devops/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "qa/SKILL.md",
+        "name": "严过关 · 测试工程师（QA）"
+      },
+      {
+        "file": "pm/SKILL.md",
+        "name": "许清楚 · 产品经理（PM）"
+      },
+      {
+        "file": "mvp-dev-team-lead/SKILL.md",
+        "name": "MVP 开发专家团 · 主理人（郝交付）"
+      },
+      {
+        "file": "frontend/SKILL.md",
+        "name": "贾思敏 · 前端工程师（Frontend Lead）"
+      },
+      {
+        "file": "devops/SKILL.md",
+        "name": "卜宕机 · 运维工程师（DevOps）"
+      },
+      {
+        "file": "designer/SKILL.md",
+        "name": "颜好看 · UI/UX 设计师（Design Director）"
+      },
+      {
+        "file": "backend/SKILL.md",
+        "name": "贝洛奇 · 后端工程师（Backend Lead）"
+      },
+      {
+        "file": "architect/SKILL.md",
+        "name": "高见远 · 架构师（Chief Architect）"
+      }
+    ]
+  },
+  {
+    "id": "ncre-exam-skills",
+    "name": "计算机等级考试专家团 v1.1 — 主理人：许清楚",
+    "description": "全国计算机等级考试（NCRE）专家团主理人 — 许清楚。系统通过一级到四级全部科目，深谙NCRE各级别考试规律与备考策略。调度4位级别专家（一级基于稳、二级程益精、三级专向明、四级任必达）按3阶段SOP产出完整备考方案。",
+    "version": "d2ad243343a6",
+    "members": [
+      {
+        "id": "ncre-level1",
+        "name": "一级",
+        "file": "ncre-level1.md"
+      },
+      {
+        "id": "ncre-level2",
+        "name": "二级",
+        "file": "ncre-level2.md"
+      },
+      {
+        "id": "ncre-level3",
+        "name": "三级",
+        "file": "ncre-level3.md"
+      },
+      {
+        "id": "ncre-level4",
+        "name": "四级",
+        "file": "ncre-level4.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "ncre-level1.md",
+        "name": "NCRE 一级专家 — 基于稳（Build on Solid Ground）"
+      },
+      {
+        "file": "ncre-level2.md",
+        "name": "NCRE 二级专家 — 程益精（Excel with Precision）"
+      },
+      {
+        "file": "ncre-level3.md",
+        "name": "NCRE 三级专家 — 专向明（Specialize with Clarity）"
+      },
+      {
+        "file": "ncre-level4.md",
+        "name": "NCRE 四级专家 — 任必达（Master with Authority）"
+      }
+    ]
+  },
+  {
+    "id": "opc-team-skills",
+    "name": "OPC一人公司专家团 - 主理人 易牧",
+    "description": "One-person company team lead - orchestrates a 9-stage co-creation workflow across resource audit, niche, value, business model, MVP, conversion, asset, and review specialists",
+    "version": "a389dc0ffa77",
+    "members": [],
+    "resources": [
+      {
+        "file": "skills/opc-value-proposition/SKILL.md",
+        "name": "价值主张"
+      },
+      {
+        "file": "skills/opc-resource-audit/SKILL.md",
+        "name": "资源盘点"
+      },
+      {
+        "file": "skills/opc-orchestrator/SKILL.md",
+        "name": "OPC 总编排"
+      },
+      {
+        "file": "skills/opc-niche-positioning/SKILL.md",
+        "name": "利基定位"
+      },
+      {
+        "file": "skills/opc-mvp-designer/SKILL.md",
+        "name": "MVP 设计"
+      },
+      {
+        "file": "skills/opc-dashboard-review/SKILL.md",
+        "name": "经营复盘"
+      },
+      {
+        "file": "skills/opc-conversion-loop/SKILL.md",
+        "name": "转化闭环"
+      },
+      {
+        "file": "skills/opc-business-model-design/SKILL.md",
+        "name": "商业模式设计"
+      },
+      {
+        "file": "skills/opc-asset-ops/SKILL.md",
+        "name": "资产沉淀"
+      },
+      {
+        "file": "agent/opc-asset-strategist.md",
+        "name": "资产沉淀师 - 沉墨"
+      },
+      {
+        "file": "agent/opc-conversion-designer.md",
+        "name": "转化路径设计师 - 闭环"
+      },
+      {
+        "file": "agent/opc-dashboard-reviewer.md",
+        "name": "经营复盘师 - 复明"
+      },
+      {
+        "file": "agent/opc-model-architect.md",
+        "name": "商业模式架构师 - 墨方"
+      },
+      {
+        "file": "agent/opc-mvp-designer.md",
+        "name": "MVP 实验设计师 - 验真"
+      },
+      {
+        "file": "agent/opc-niche-strategist.md",
+        "name": "利基定位师 - 林利基"
+      },
+      {
+        "file": "agent/opc-resource-auditor.md",
+        "name": "资源盘点师 - 顾盘"
+      },
+      {
+        "file": "agent/opc-team-lead.md",
+        "name": "OPC一人公司专家团 - 主理人 易牧"
+      },
+      {
+        "file": "agent/opc-value-designer.md",
+        "name": "价值主张设计师 - 言之"
+      }
+    ]
+  },
+  {
+    "id": "open-spec-doc-skills",
+    "name": "专业文档生成团队 - 主理人",
+    "description": "专业文档生成团队主理人（章成文 · 总编辑）。协调 3 位专业成员（doc-researcher、doc-generator、doc-auditor）按 6 阶段工作流完成企业级长文档生成。 触发词：\"帮我写方案\"、\"生成技术方案\"、\"施工图设计说明\"、\"招投标文件\"、\"维修手册\"、\"API文档\"、\"企业级长文档\"、\"合规文档\"、\"基于规范写文档\"、\"帮我审一下这篇文档\"。 路由逻辑：单一维度任务（仅检索/仅撰写/仅审核）走单 agent 直调；综合性任务走对应 Workflow。",
+    "version": "67eea7b5b2ee",
+    "members": [
+      {
+        "id": "doc-researcher",
+        "name": "苏寻源（Su）文献检索员",
+        "file": "doc-researcher.md"
+      },
+      {
+        "id": "doc-generator",
+        "name": "支笔生（Zhi）内容生成员",
+        "file": "doc-generator.md"
+      },
+      {
+        "id": "doc-auditor",
+        "name": "严审之（Yan）质量审核员",
+        "file": "doc-auditor.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "doc-auditor.md",
+        "name": "质量审核员 - 严审之（Yan）"
+      },
+      {
+        "file": "doc-generator.md",
+        "name": "内容生成员 - 支笔生（Zhi）"
+      },
+      {
+        "file": "doc-researcher.md",
+        "name": "文献检索员 - 苏寻源（Su）"
+      }
+    ]
+  },
+  {
+    "id": "product-strategy-skills",
+    "name": "产品战略团队 - 主理人",
+    "description": "产品战略团队主理人（方向明 · 产品舵手）。负责编排和协调产品管理全流程，调度需求分析、用户研究、竞品分析、数据分析、路线图规划 5 位团队成员按标准工作流完成交付。当用户提出复杂产品管理任务（撰写 PRD、竞品分析、路线图规划、头脑风暴、利益相关者更新）时触发。",
+    "version": "c607113a00e7",
+    "members": [
+      {
+        "id": "requirement-analyst",
+        "name": "析客（Specky） · 需求分析师（Requirement Analyst）",
+        "file": "skills/requirement-analyst-SKILL.md"
+      },
+      {
+        "id": "user-researcher",
+        "name": "瑞思（Reese） · 用户研究员（User Researcher）",
+        "file": "skills/user-researcher-SKILL.md"
+      },
+      {
+        "id": "competitive-analyst",
+        "name": "竞析（Compa） · 竞品分析师（Competitive Analyst）",
+        "file": "skills/competitive-analyst-SKILL.md"
+      },
+      {
+        "id": "data-analyst",
+        "name": "数析（Metric） · 数据分析师（Data Analyst）",
+        "file": "skills/data-analyst-SKILL.md"
+      },
+      {
+        "id": "roadmap-planner",
+        "name": "路径（Roadie） · 路线图规划师（Roadmap Planner）",
+        "file": "skills/roadmap-planner-SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "skills/competitive-analyst-SKILL.md",
+        "name": "竞析 (Compa) — 竞品分析师"
+      },
+      {
+        "file": "skills/data-analyst-SKILL.md",
+        "name": "数析 (Metric) — 数据分析师"
+      },
+      {
+        "file": "skills/product-director-SKILL.md",
+        "name": "产品战略团队 - 主理人"
+      },
+      {
+        "file": "skills/product-playbook-SKILL.md",
+        "name": "产品战略团队手册 (Product Playbook)"
+      },
+      {
+        "file": "skills/requirement-analyst-SKILL.md",
+        "name": "析客 (Specky) — 需求分析师"
+      },
+      {
+        "file": "skills/roadmap-planner-SKILL.md",
+        "name": "路径 (Roadie) — 路线图规划师"
+      },
+      {
+        "file": "skills/user-researcher-SKILL.md",
+        "name": "瑞思 (Reese) — 用户研究员"
+      }
+    ]
+  },
+  {
+    "id": "promo-creator-skills",
+    "name": "宣传片创作团队 - 主理人（Max · 制片人）",
+    "description": "宣传片创作团队主理人（制片人）skill。协调 5 位专业成员（brief-strategist、storyboard-artist、asset-producer、video-editor、music-director）按 6 阶段 SOP 完成产品宣传片 MP4 全流程制作。",
+    "version": "381f91214c56",
+    "members": [],
+    "resources": [
+      {
+        "file": "02-brief-strategist.md",
+        "name": "创意策略师 - Bella"
+      },
+      {
+        "file": "03-storyboard-artist.md",
+        "name": "分镜师 - Sean"
+      },
+      {
+        "file": "04-asset-producer.md",
+        "name": "素材制作人 - Ada"
+      },
+      {
+        "file": "05-video-editor.md",
+        "name": "剪辑师兼动效师 - Ethan"
+      },
+      {
+        "file": "06-music-director.md",
+        "name": "音乐总监 - Melody"
+      }
+    ]
+  },
+  {
+    "id": "sales-battle-skills",
+    "name": "销售作战团队 · 主理人应必达 — Skill 文档",
+    "description": "销售作战团队 · 主理人应必达 — Skill 文档",
+    "version": "986d1b7145e4",
+    "members": [],
+    "resources": [
+      {
+        "file": "skill-account-researcher-2026-07-04.md",
+        "name": "探客 (Scout) · 客户研究员 — Skill 文档"
+      },
+      {
+        "file": "skill-competitive-intel-2026-07-04.md",
+        "name": "竞情 (Intel) · 竞品情报分析师 — Skill 文档"
+      },
+      {
+        "file": "skill-outreach-strategist-2026-07-04.md",
+        "name": "联达 (Reach) · 外联策略师 — Skill 文档"
+      },
+      {
+        "file": "skill-sales-forecaster-2026-07-04.md",
+        "name": "预析 (Forecast) · 销售预测分析师 — Skill 文档"
+      },
+      {
+        "file": "skill-sales-playbook-2026-07-04.md",
+        "name": "销售作战团队完整手册 (Sales Playbook) — Skill 文档"
+      }
+    ]
+  },
+  {
+    "id": "seo-content-skills",
+    "name": "SEO 内容营销团队编排与工作流",
+    "description": "SEO 内容营销团队编排与工作流管理工具。提供完整的 5 阶段 SOP、团队协作机制、 成员调度规范和最终报告整合标准。 触发词：团队编排、工作流管理、SOP、任务调度、内容发布、团队协作",
+    "version": "0ba2aeac2106",
+    "members": [],
+    "resources": [
+      {
+        "file": "team-orchestration/SKILL.md",
+        "name": "SEO 内容营销团队编排与工作流"
+      },
+      {
+        "file": "link-strategy/SKILL.md",
+        "name": "链接策略与内容健康度工具"
+      },
+      {
+        "file": "keyword-research/SKILL.md",
+        "name": "关键词研究与主题聚类策略"
+      },
+      {
+        "file": "distribution-strategy/SKILL.md",
+        "name": "内容分发与复用策略"
+      },
+      {
+        "file": "content-editing/SKILL.md",
+        "name": "内容编辑与人性化工具"
+      }
+    ]
+  },
+  {
+    "id": "smb-team-skills",
+    "name": "小企业经营团队 - 主理人 · 全管事（Quan）· 经营总管（Business General Manager）",
+    "description": "小企业经营团队主理人（全管事 Quan · 经营总管 Business General Manager）。负责编排四位领域专家（财务管家、营收增长师、客户与合规官、组织运营师）协同解决小企业经营中的各类问题。当用户提出小企业经营管理相关的综合性问题（月度复盘、工资风险评估、季度复盘、大客户投诉、现金流紧张、招聘入职等）时触发。",
+    "version": "fbd3ebc3817e",
+    "members": [
+      {
+        "id": "smb-finance-member",
+        "name": "财务管家",
+        "file": "smb-finance-member.md"
+      },
+      {
+        "id": "smb-revenue-member",
+        "name": "营收增长师",
+        "file": "smb-revenue-member.md"
+      },
+      {
+        "id": "smb-compliance-member",
+        "name": "客户与合规官",
+        "file": "smb-compliance-member.md"
+      },
+      {
+        "id": "smb-ops-member",
+        "name": "组织运营师",
+        "file": "smb-ops-member.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "smb-compliance-member.md",
+        "name": "客户与合规官 · 严守约（Yan）· Customer & Compliance Officer"
+      },
+      {
+        "file": "smb-finance-member.md",
+        "name": "财务管家 · 钱守通（Qian）· Finance Steward"
+      },
+      {
+        "file": "smb-ops-member.md",
+        "name": "组织运营师 · 毕运营（Bi）· Operations Manager"
+      },
+      {
+        "file": "smb-revenue-member.md",
+        "name": "营收增长师 · 甄客来（Zhen）· Revenue Growth Driver"
+      }
+    ]
+  },
+  {
+    "id": "social-engagement-skills",
+    "name": "社媒互动增长专家团 · 主理人（格罗斯 · Growth）",
+    "description": "社媒互动增长专家团主理人（格罗斯 · Growth）。统筹 4 位专家（柏特/Bot、瑞普/Reply、麦恩/Mine、沃奇/Watch）按 5 阶段 SOP 完成社交媒体互动增长策略设计与执行。 触发词：互动增长、社媒增长、社交媒体运营、粉丝增长、互动率提升、跨平台增长、评论运营、品牌监控、信号挖掘、社媒爬取、自动化互动、增长策略。 路由逻辑：综合性增长策略需求走完整 SOP；单一维度需求（仅互动自动化/仅评论运营/仅信号挖掘/仅品牌监控）可直调对应专家。",
+    "version": "6440607bb404",
+    "members": [
+      {
+        "id": "interaction-automator",
+        "name": "柏特",
+        "file": "interaction-automator/SKILL.md"
+      },
+      {
+        "id": "ai-comment-specialist",
+        "name": "瑞普",
+        "file": "ai-comment-specialist/SKILL.md"
+      },
+      {
+        "id": "signal-miner",
+        "name": "麦恩",
+        "file": "signal-miner/SKILL.md"
+      },
+      {
+        "id": "brand-monitor",
+        "name": "沃奇",
+        "file": "brand-monitor/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "social-engagement-team-lead/SKILL.md",
+        "name": "社媒互动增长专家团 · 主理人（格罗斯 · Growth）"
+      },
+      {
+        "file": "signal-miner/SKILL.md",
+        "name": "麦恩 · 信号挖掘专家（Signal Miner）"
+      },
+      {
+        "file": "interaction-automator/SKILL.md",
+        "name": "柏特 · 自动化互动专家（Interaction Automator）"
+      },
+      {
+        "file": "brand-monitor/SKILL.md",
+        "name": "沃奇 · 品牌监控专家（Brand Monitor）"
+      },
+      {
+        "file": "ai-comment-specialist/SKILL.md",
+        "name": "瑞普 · AI 评论运营专家（AI Comment Specialist）"
+      }
+    ]
+  },
+  {
+    "id": "software-company-skills",
+    "name": "软件开发团队 · 主理人（齐活林 · 交付总监）",
+    "description": "软件开发团队主理人（齐活林 · 交付总监）。统筹 4 位专家（产品经理/架构师/工程师/QA）按 SOP 工作流完成软件交付。支持快速模式（小需求/BugFix）和标准 SOP（中大型需求）。 触发词：\"帮我开发\"、\"帮我做一个\"、\"写一个应用\"、\"做个游戏\"、\"开发一个系统\"、\"修复 Bug\"、\"搭建项目\"。 路由逻辑：小需求（≤10源文件/单页/小游戏）走快速模式 → 工程师直写；Bug修复走BugFix路径；中大型需求走完整PRD→架构→编码→测试SOP。",
+    "version": "e2bfac8344fc",
+    "members": [
+      {
+        "id": "software-product-manager",
+        "name": "许清楚",
+        "file": "software-product-manager/SKILL.md"
+      },
+      {
+        "id": "software-architect",
+        "name": "高见远",
+        "file": "software-architect/SKILL.md"
+      },
+      {
+        "id": "software-engineer",
+        "name": "寇豆码",
+        "file": "software-engineer/SKILL.md"
+      },
+      {
+        "id": "software-qa-engineer",
+        "name": "严过关",
+        "file": "software-qa-engineer/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "software-team-lead/SKILL.md",
+        "name": "软件开发团队 · 主理人（齐活林 · 交付总监）"
+      },
+      {
+        "file": "software-qa-engineer/SKILL.md",
+        "name": "严过关 · QA 工程师（QA Engineer）"
+      },
+      {
+        "file": "software-product-manager/SKILL.md",
+        "name": "许清楚 · 产品经理（Product Manager）"
+      },
+      {
+        "file": "software-engineer/SKILL.md",
+        "name": "寇豆码 · 软件工程师（Software Engineer）"
+      },
+      {
+        "file": "software-architect/SKILL.md",
+        "name": "高见远 · 架构师（Architect）"
+      }
+    ]
+  },
+  {
+    "id": "software-workshop",
+    "name": "GStack 工程团队 — 主理人（gstack-lead）",
+    "description": "GStack 工程团队 — 主理人（gstacklead）",
+    "version": "856cb132a77f",
+    "members": [],
+    "resources": [
+      {
+        "file": "00-gstack-software-workshop-overview.md",
+        "name": "GStack 软件工坊 — 完整系统概览"
+      },
+      {
+        "file": "02-gstack-product-reviewer-agent.md",
+        "name": "GStack Product Reviewer — 产品评审员（gstack-product-reviewer）"
+      },
+      {
+        "file": "03-gstack-security-officer-agent.md",
+        "name": "GStack Chief Security Officer — 安全卫士（gstack-security-officer）"
+      },
+      {
+        "file": "04-gstack-qa-lead-agent.md",
+        "name": "GStack QA Lead — 质量门神（gstack-qa-lead）"
+      },
+      {
+        "file": "05-gstack-designer-agent.md",
+        "name": "GStack 设计顾问 — 设计师（gstack-designer）"
+      },
+      {
+        "file": "06-gstack-investigator-agent.md",
+        "name": "GStack Investigator — 排障手（gstack-investigator）"
+      },
+      {
+        "file": "07-review-skill.md",
+        "name": "Review Skill — PR 代码审查"
+      },
+      {
+        "file": "08-qa-skill.md",
+        "name": "QA Skill — QA 测试"
+      },
+      {
+        "file": "09-design-html-skill.md",
+        "name": "Design HTML Skill — 生产级 HTML/CSS 生成"
+      },
+      {
+        "file": "10-qa-issue-taxonomy.md",
+        "name": "QA Issue Taxonomy — Issue 分类学"
+      },
+      {
+        "file": "11-qa-report-template.md",
+        "name": "QA Report Template — QA 报告模板"
+      }
+    ]
+  },
+  {
+    "id": "stock-partner-skills",
+    "name": "腾讯自选股股票投研专家团 · 主理人",
+    "description": "Stock analysis roundtable orchestrator — 腾讯自选股股票投研专家团主理人，负责调度6位专家成员、组织圆桌讨论、汇编多视角报告",
+    "version": "2fb2dedc94c4",
+    "members": [],
+    "resources": [
+      {
+        "file": "SKILL-00-系统总览.md",
+        "name": "腾讯自选股股票投研专家团 · 系统总览"
+      },
+      {
+        "file": "SKILL-01-westock-data.md",
+        "name": "WeStock Data — 腾讯自选股数据查询技能"
+      },
+      {
+        "file": "SKILL-02-westock-tool.md",
+        "name": "WeStock Tool — 腾讯自选股选股筛选技能"
+      },
+      {
+        "file": "SKILL-03-md-to-html.md",
+        "name": "md-to-html — 圆桌报告 HTML 渲染技能"
+      },
+      {
+        "file": "SKILL-11-产业策略师.md",
+        "name": "🌊 产业策略师（星望远）— 15 年产业趋势投资人，前公募基金经理"
+      },
+      {
+        "file": "SKILL-12-信号派首席.md",
+        "name": "📡 信号派首席（洲四方）— 20 年实战信号猎手，四层信号体系"
+      },
+      {
+        "file": "SKILL-13-估值分析师.md",
+        "name": "🧮 估值分析师（文衡价）— 券商策略师出身，PE Bands / PEG 定价，12 年经验"
+      },
+      {
+        "file": "SKILL-14-逆向投资人.md",
+        "name": "🏔️ 逆向投资人（坤候底）— 17 年穿越牛熊，只买大市值跌出来的机会"
+      },
+      {
+        "file": "SKILL-15-财报研究员.md",
+        "name": "🔬 财报研究员（钊审财）— 基本面深耕者，行业研究员型，永不空仓"
+      },
+      {
+        "file": "SKILL-16-短线冲浪手.md",
+        "name": "⚡ 短线冲浪手（磊追浪）— A 股 + 美股双修短线派，胜率约 60%"
+      },
+      {
+        "file": "avatar-mapping.md",
+        "name": "头像映射表（唯一权威）"
+      },
+      {
+        "file": "components.md",
+        "name": "圆桌报告组件接口手册"
+      }
+    ]
+  },
+  {
+    "id": "super-partner-skills",
+    "name": "超级合伙人入口路由与分派",
+    "description": "超级合伙人入口路由与分派技能。定义如何检测触发场景、识别问题簇、选择 teamMode、建立团队和分派成员。",
+    "version": "5d6c8950ea0c",
+    "members": [],
+    "resources": [
+      {
+        "file": "super-partner-strategy-member/SKILL.md",
+        "name": "战略合伙人 — 老孙"
+      },
+      {
+        "file": "super-partner-product-member/SKILL.md",
+        "name": "产品智能化合伙人 — 小白"
+      },
+      {
+        "file": "super-partner-ops-member/SKILL.md",
+        "name": "运营合伙人 — 老朱"
+      },
+      {
+        "file": "super-partner-multi-workshop/SKILL.md",
+        "name": "多维度协同工作坊"
+      },
+      {
+        "file": "super-partner-lebao-activation/SKILL.md",
+        "name": "乐包激活与能力继续"
+      },
+      {
+        "file": "super-partner-growth-member/SKILL.md",
+        "name": "增长合伙人 — 老沙"
+      },
+      {
+        "file": "super-partner-genius-draft/SKILL.md",
+        "name": "天才合伙人草案"
+      },
+      {
+        "file": "super-partner-fbs-followthrough/SKILL.md",
+        "name": "福帮手服务跟进链路"
+      },
+      {
+        "file": "super-partner-entry-routing/SKILL.md",
+        "name": "超级合伙人入口路由与分派"
+      },
+      {
+        "file": "super-partner-core/SKILL.md",
+        "name": "超级合伙人核心合同"
+      },
+      {
+        "file": "super-partner-company-next-step/SKILL.md",
+        "name": "公司下一步工作流"
+      }
+    ]
+  },
+  {
+    "id": "tax-compliance-skills",
+    "name": "财税合规专家团 - 主理人（钱合规）",
+    "description": "财税合规专家团主理人（钱合规）——协调 5 位专业成员按标准工作流完成企业财税合规全链路管理",
+    "version": "1ad982e98cf0",
+    "members": [
+      {
+        "id": "invoice-processor",
+        "name": "invoice-processor",
+        "file": "invoice-processor/SKILL.md"
+      },
+      {
+        "id": "voucher-accountant",
+        "name": "voucher-accountant",
+        "file": "voucher-accountant/SKILL.md"
+      },
+      {
+        "id": "financial-reporter",
+        "name": "financial-reporter",
+        "file": "financial-reporter/SKILL.md"
+      },
+      {
+        "id": "tax-filing-specialist",
+        "name": "tax-filing-specialist",
+        "file": "tax-filing-specialist/SKILL.md"
+      },
+      {
+        "id": "compliance-auditor",
+        "name": "compliance-auditor",
+        "file": "compliance-auditor/SKILL.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "voucher-accountant/SKILL.md",
+        "name": "记账专员 - 张记账"
+      },
+      {
+        "file": "tax-filing-specialist/SKILL.md",
+        "name": "纳税申报专员 - 孙申报"
+      },
+      {
+        "file": "tax-compliance-team-lead/SKILL.md",
+        "name": "财税合规专家团 - 主理人（钱合规）"
+      },
+      {
+        "file": "tax-compliance-engine/SKILL.md",
+        "name": "财税合规知识引擎"
+      },
+      {
+        "file": "invoice-processor/SKILL.md",
+        "name": "发票处理专员 - 李票务"
+      },
+      {
+        "file": "financial-reporter/SKILL.md",
+        "name": "报表分析专员 - 王报表"
+      },
+      {
+        "file": "compliance-auditor/SKILL.md",
+        "name": "合规审计专员 - 赵审计"
+      }
+    ]
+  },
+  {
+    "id": "trading-agent-skills",
+    "name": "交易分析团队 - 主理人",
+    "description": "交易分析团队主理人（何执舟 · 首席策略官）。调度 12 位专业成员（技术分析师、基本面分析师、新闻分析师、情绪分析师、多头研究员、空头研究员、研究主管、交易员、激进风险分析师、保守风险分析师、中性风险分析师、风险主管）按 5 阶段工作流完成系统性投资分析，输出多维度综合分析报告及操作方案。 触发词：交易分析、投资分析、股票分析、买卖决策、多空分析、风险评估、 技术分析、基本面分析、投资建议、买入卖出、持有建议、投资决策、 该不该买、能不能卖、要不要持有、看好看空、仓位建议、加仓减仓、 投资价值、值不值得买、完整分析、深度分析、 帮我分析、全面评估、全方位分析。",
+    "version": "4005fa989340",
+    "members": [],
+    "resources": [
+      {
+        "file": "02-market-analyst.md",
+        "name": "市场技术分析师 — 海·浪（Wave）"
+      },
+      {
+        "file": "03-fundamentals-analyst.md",
+        "name": "基本面分析师 — 磐·石（Rock）"
+      },
+      {
+        "file": "04-news-analyst.md",
+        "name": "新闻分析师 — 观·潮（Tide）"
+      },
+      {
+        "file": "05-sentiment-analyst.md",
+        "name": "情绪分析师 — 窥·市（Market Eye）"
+      },
+      {
+        "file": "06-bull-researcher.md",
+        "name": "多头研究员 — 乘·风（Ride the Wind）"
+      },
+      {
+        "file": "07-bear-researcher.md",
+        "name": "空头研究员 — 破·浪（Break the Wave）"
+      },
+      {
+        "file": "08-research-manager.md",
+        "name": "研究主管 — 权·衡（Balance）"
+      },
+      {
+        "file": "09-trader.md",
+        "name": "交易员 — 执·剑（Sword Bearer）"
+      },
+      {
+        "file": "10-aggressive-risk-analyst.md",
+        "name": "激进风险分析师 — 逐·浪（Chase the Wave）"
+      },
+      {
+        "file": "11-conservative-risk-analyst.md",
+        "name": "保守风险分析师 — 守·谷（Guard the Valley）"
+      },
+      {
+        "file": "12-neutral-risk-analyst.md",
+        "name": "中性风险分析师 — 平衡尺（Balance Scale）"
+      },
+      {
+        "file": "13-risk-manager.md",
+        "name": "风险主管 — 定盘星（North Star）"
+      }
+    ]
+  },
+  {
+    "id": "video-dissection-skills",
+    "name": "视频解剖 · 主理人·阿爆",
+    "description": "视频解剖主理人·阿爆的调度技能。当用户发送抖音视频链接并请求分析拍摄手法、 拆解爆款视频、学习拍摄技巧、复刻视频内容时激活。 负责统筹视频提取和拍摄脚本分析的全流程，协调小凯（视频获取）和小淼（拍摄分析） 两位成员按标准 SOP 完成交付。 英文触发：video dissection, video analysis, filming script breakdown, Douyin video analysis.",
+    "version": "8f8e72f15818",
+    "members": [],
+    "resources": [
+      {
+        "file": "video-extractor/SKILL.md",
+        "name": "小凯 · 视频提取工程师"
+      },
+      {
+        "file": "video-dissection-team-lead/SKILL.md",
+        "name": "视频解剖 · 主理人·阿爆"
+      },
+      {
+        "file": "script-analyst/SKILL.md",
+        "name": "小淼 · 拍摄脚本深度分析专家"
+      }
+    ]
+  },
+  {
+    "id": "video-gen-skills",
+    "name": "视频创作团队 · 主理人调度技能",
+    "description": "视频生成团队主理人（凌导）调度技能。负责创建团队、按 SOP 编排成员、质检、交付。 触发词：主理人、凌导、我的团队、调度",
+    "version": "09bafb224140",
+    "members": [],
+    "resources": [
+      {
+        "file": "00-team-playbook.md",
+        "name": "视频生成团队 · 完整手册 (VideoGenTeam Playbook)"
+      },
+      {
+        "file": "02-ling-reader-collector-skill.md",
+        "name": "灵阅 · 信息采集技能"
+      },
+      {
+        "file": "03-ling-planner-scriptwriter-skill.md",
+        "name": "灵枢 · 内容策划技能"
+      },
+      {
+        "file": "04-ling-producer-renderer-skill.md",
+        "name": "灵映 · 视频制作技能"
+      }
+    ]
+  },
+  {
+    "id": "voiceover-script-skills",
+    "name": "PPT讲稿口播专家团 · 主理人（言予 · 口播总监）",
+    "description": "PPT讲稿口播专家团主理人（言予 · 口播总监）。调度 5 位专业成员（ppt-parser、style-strategist、voice-script-writer、aigc-detoxer、quality-checker）按 4 阶段 SOP 完成交付。 触发词：\"我需要一个专家团\"。",
+    "version": "52f9c2f4b8c0",
+    "members": [
+      {
+        "id": "ppt-parser",
+        "name": "ppt-parser",
+        "file": "ppt-parser.md"
+      },
+      {
+        "id": "style-strategist",
+        "name": "style-strategist",
+        "file": "style-strategist.md"
+      },
+      {
+        "id": "voice-script-writer",
+        "name": "voice-script-writer",
+        "file": "voice-script-writer.md"
+      },
+      {
+        "id": "aigc-detoxer",
+        "name": "aigc-detoxer",
+        "file": "aigc-detoxer.md"
+      },
+      {
+        "id": "quality-checker",
+        "name": "quality-checker",
+        "file": "quality-checker.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "aigc-detoxer.md",
+        "name": "去AI味优化师 · 甄人"
+      },
+      {
+        "file": "ppt-parser.md",
+        "name": "PPT内容解析师 · 阿拆"
+      },
+      {
+        "file": "quality-checker.md",
+        "name": "质量审核员 · 严检"
+      },
+      {
+        "file": "style-strategist.md",
+        "name": "风格策略师 · 司风"
+      },
+      {
+        "file": "voice-script-writer.md",
+        "name": "口播脚本撰写人 · 王笔"
+      }
+    ]
+  },
+  {
+    "id": "worldcup-lottery-skills",
+    "name": "足球彩票预测专家团 · 主理人（贺知衡 · 首席彩票分析师）",
+    "description": "足球彩票预测专家团主理人（贺知衡 · 首席彩票分析师）。调度 5 位专业成员（lottery-analyst、match-predictor、risk-manager、data-collector、report-finalizer）按 4 阶段 SOP 完成交付。 触发词：\"我需要一个专家团\"。",
+    "version": "fdb653e62403",
+    "members": [
+      {
+        "id": "lottery-analyst",
+        "name": "lottery-analyst",
+        "file": "lottery-analyst.md"
+      },
+      {
+        "id": "match-predictor",
+        "name": "match-predictor",
+        "file": "match-predictor.md"
+      },
+      {
+        "id": "risk-manager",
+        "name": "risk-manager",
+        "file": "risk-manager.md"
+      },
+      {
+        "id": "data-collector",
+        "name": "data-collector",
+        "file": "data-collector.md"
+      },
+      {
+        "id": "report-finalizer",
+        "name": "report-finalizer",
+        "file": "report-finalizer.md"
+      }
+    ],
+    "resources": [
+      {
+        "file": "data-collector.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "lottery-analyst.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "match-predictor.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "report-finalizer.md",
+        "name": "核心能力"
+      },
+      {
+        "file": "risk-manager.md",
+        "name": "核心能力"
+      }
+    ]
+  }
+]

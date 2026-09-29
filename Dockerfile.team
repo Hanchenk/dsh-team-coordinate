@@ -13,6 +13,7 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/bin ./bin
 COPY --from=build /app/src ./src
 COPY --from=build /app/team-ui ./team-ui
+RUN mkdir -p /var/lib/team-secrets && chown node:node /var/lib/team-secrets
 USER node
 EXPOSE 3090
 CMD ["node", "bin/dsh-team-hub.js", "team", "start"]

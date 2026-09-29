@@ -27,6 +27,19 @@ export async function invite(db, user, projectId, input) {
   });
 }
 
+export async function addMember(db, user, projectId, input) {
+  uuid(input.userId); ensure(roles.includes(input.role));
+  return transaction(db, async tx => {
+    await member(tx, user, projectId, true, true);
+    const { rows:[target] } = await tx.query("SELECT id,roles FROM team_users WHERE id=$1 AND active", [input.userId]);
+    ensure(target, 404, "user_not_found");
+    ensure(target.roles.includes(input.role), 403, "role_not_granted");
+    await tx.query("INSERT INTO team_members VALUES($1,$2,$3) ON CONFLICT DO NOTHING", [projectId,target.id,input.role]);
+    await audit(tx,user,projectId,"member.added");
+    return { ok:true };
+  });
+}
+
 export async function acceptInvite(db, user, input) {
   str(input.token, 200);
   return transaction(db, async tx => {
@@ -62,7 +75,8 @@ export async function submitBatch(db, user, projectId, input) {
   ensure(Array.isArray(input.entries) && input.entries.length > 0 && input.entries.length <= 100);
   const entries = input.entries.map(e => {
     const id = str(e.id, 100); ensure(["user", "assistant"].includes(e.role));
-    return { id, role: e.role, text: redact(str(e.text, 12000)) };
+    str(e.text, 12000);
+    return { id, role: e.role, text: redact(e.text) };
   });
   ensure(new Set(entries.map(e => e.id)).size === entries.length);
   ensure(JSON.stringify(entries).length <= 48000, 413, "batch_too_large");
@@ -77,11 +91,29 @@ export async function submitBatch(db, user, projectId, input) {
       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT(user_id,device,operation_id) DO NOTHING RETURNING id`,
     [batchId, projectId, user.id, user.device, input.profile, input.session, input.operationId, hash, JSON.stringify(entries)]);
     if (!inserted.rowCount) {
-      const { rows: [existing] } = await tx.query("SELECT b.input_hash,j.id FROM team_batches b JOIN team_jobs j ON j.batch_id=b.id WHERE b.user_id=$1 AND b.device=$2 AND b.operation_id=$3", [user.id, user.device, input.operationId]);
+      const { rows: [existing] } = await tx.query("SELECT b.input_hash,j.id FROM team_batches b LEFT JOIN team_jobs j ON j.batch_id=b.id WHERE b.user_id=$1 AND b.device=$2 AND b.operation_id=$3", [user.id, user.device, input.operationId]);
       ensure(existing?.input_hash === hash, 409, "idempotency_conflict");
       return { jobId: existing.id };
     }
-    await tx.query("INSERT INTO team_jobs(id,batch_id) VALUES($1,$2)", [jobId, batchId]);
+    // A local session belongs to its project/device/profile, independently of the uploader account.
+    const { rows:[known] }=await tx.query("SELECT id FROM team_shared_sessions WHERE project_id=$1 AND device=$2 AND profile=$3 AND session=$4 AND merged_into IS NULL",[projectId,user.device,input.profile,input.session]);
+    const shared=known ?? (await tx.query(`INSERT INTO team_shared_sessions(id,project_id,user_id,device,profile,session,title)
+      VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id`, [randomUUID(),projectId,user.id,user.device,input.profile,input.session,entries[0].text.slice(0,120)])).rows[0];
+    const fresh=[];let throughSeq;
+    for (const entry of entries) {
+      const inserted=await tx.query(`INSERT INTO team_session_messages(session_id,source_id,role,content)
+        VALUES($1,$2,$3,$4) ON CONFLICT(session_id,source_id) DO NOTHING RETURNING seq`, [shared.id,entry.id,entry.role,entry.text]);
+      if(inserted.rowCount){fresh.push(entry);throughSeq=inserted.rows[0].seq;}
+      else {
+        const {rows:[existing]}=await tx.query("SELECT role,content FROM team_session_messages WHERE session_id=$1 AND source_id=$2",[shared.id,entry.id]);
+        ensure(existing.role===entry.role && existing.content===entry.text,409,"source_content_conflict");
+      }
+    }
+    if(!fresh.length)return {jobId:null,duplicate:true};
+    await tx.query("UPDATE team_batches SET entries=$2 WHERE id=$1",[batchId,JSON.stringify(fresh)]);
+    await tx.query("INSERT INTO team_jobs(id,batch_id,through_seq) VALUES($1,$2,$3)",[jobId,batchId,throughSeq]);
+    await tx.query("UPDATE team_shared_sessions SET updated_at=now() WHERE id=$1",[shared.id]);
+    await change(tx,projectId,"session.updated",shared.id,{});
     return { jobId };
   });
 }
@@ -89,10 +121,10 @@ export async function submitBatch(db, user, projectId, input) {
 export async function snapshot(db, user, projectId) {
   return transaction(db, async tx => {
     await member(tx, user, projectId, false, true);
-    const { rows: [project] } = await tx.query("SELECT seq FROM team_projects WHERE id=$1", [projectId]);
+    const { rows: [project] } = await tx.query("SELECT seq,name,description FROM team_projects WHERE id=$1", [projectId]);
     const { rows: memories } = await tx.query("SELECT * FROM team_memories WHERE project_id=$1 AND NOT withdrawn ORDER BY created_at DESC LIMIT 501", [projectId]);
     ensure(memories.length <= 500, 409, "snapshot_capacity_exceeded");
-    return { cursor: project.seq, memories };
+    return { cursor: project.seq, name: project.name, description: project.description ?? "", memories };
   });
 }
 

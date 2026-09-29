@@ -49,9 +49,13 @@
     "@deepseek-ai/cordis": "^4.0.2",
     "esbuild": "^0.25.9",
     "lucide": "^0.468.0",
+    "marked": "^18.0.12",
     "playwright": "^1.63.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "semver": "^7.8.5",
+    "tar": "^7.5.22",
+    "yaml": "^2.9.0"
   },
   "repository": {
     "type": "git",

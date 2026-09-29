@@ -11,7 +11,8 @@ test("packaged Host loads through Cordis and disposes routes",async t=>{
   t.after(async()=>{await host.close();fs.rmSync(dir,{recursive:true,force:true});});
   assert.ok(host.routes.has("/team-plugin"));
   assert.equal((await host.call("state")).user,null);
-  assert.equal(host.variables.get("team_hub_memory")({}),"");
+  assert.equal(host.variables.has("team_hub_memory"),false);
+  assert.equal(host.contexts.size,0);
   assert.equal(host.tools.size,2);
   const tool=host.tools.get("team_memory_search");
   assert.deepEqual(await tool.execute({query:"test"},{signal:new AbortController().signal}),{text:"[]"});

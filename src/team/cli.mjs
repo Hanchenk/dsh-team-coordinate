@@ -2,6 +2,7 @@ import { database, migrate } from "./db.mjs";
 import { createUser } from "./auth.mjs";
 import { modelConfig } from "./model.mjs";
 import { startTeamServer } from "./server.mjs";
+import { readModel } from "./settings.mjs";
 
 export async function runTeamCli(args) {
   const [command, name, role = "developer"] = args;
@@ -18,10 +19,26 @@ export async function runTeamCli(args) {
       await db.end(); return;
     }
     const host = process.env.TEAM_HOST || "127.0.0.1", port = Number(process.env.TEAM_PORT || 3090);
+    const ssoBaseUrl = process.env.TEAM_SSO_BASE_URL || process.env.TEAM_CERTIFICATE_BASE_URL || "";
+    const sso = {
+      timeoutMs: Number(process.env.TEAM_SSO_TIMEOUT_MS || 5000),
+      provider: process.env.TEAM_SSO_PROVIDER || "yemast",
+      allowInsecure: String(process.env.TEAM_SSO_ALLOW_INSECURE || "").trim().toLowerCase() === "true",
+      trustProxy: process.env.TEAM_SSO_TRUST_PROXY,
+      defaultRoles: (process.env.TEAM_SSO_DEFAULT_ROLES || "developer").split(",").map(value => value.trim()).filter(Boolean),
+    };
+    if (ssoBaseUrl) sso.baseUrl = ssoBaseUrl;
     const app = await startTeamServer({ db, host, port, model: modelConfig(),
-      allowedHosts: (process.env.TEAM_ALLOWED_HOSTS || "").split(",").filter(Boolean) });
+      allowedHosts: (process.env.TEAM_ALLOWED_HOSTS || "").split(",").map(value => value.trim()).filter(Boolean),
+      sso });
     console.log(`Team collaboration: http://${host}:${app.server.address().port}`);
-    if (!process.env.TEAM_MODEL_BASE_URL || !process.env.TEAM_MODEL_NAME) console.log("Model not configured; received batches remain queued.");
+    const currentModel=await readModel(db,modelConfig());
+    if (!currentModel.baseUrl || !currentModel.name) console.log("Model not configured; received batches remain queued. Configure it in the admin console.");
+    if (ssoBaseUrl) {
+      let displayUrl = "<invalid configuration>";
+      try { displayUrl = new URL(ssoBaseUrl).origin; } catch {}
+      console.log(`Yemast SSO enabled: ${displayUrl}`);
+    }
     let closing = false;
     const close = async () => { if (closing) return; closing = true; await app.close(); await db.end(); };
     process.once("SIGTERM", close); process.once("SIGINT", close);

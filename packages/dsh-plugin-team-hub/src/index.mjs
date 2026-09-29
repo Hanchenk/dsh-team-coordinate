@@ -1,8 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
+import { fileURLToPath } from "node:url";
+import { PluginUpdater } from "./updater.mjs";
+import releaseKey from "./release-key.json" with { type:"json" };
+import packageMetadata from "../package.json" with { type:"json" };
 import { TeamEngine } from "./engine.mjs";
 import { registerMemoryTools } from "./tools.mjs";
+import { workspaceActions } from "./workspaces.mjs";
 import { ensure, digest } from "../../../src/team/contracts.mjs";
 
 export const name = "team-hub";
@@ -13,12 +18,18 @@ export function apply(ctx, config = {}) {
   const dataDir = config.dataDir ?? path.join(os.homedir(), ".dsh-team-plugin", profileKey);
   ensure(typeof dataDir === "string" && path.isAbsolute(dataDir));
   const engine = new TeamEngine(dataDir);
+  const updater=new PluginUpdater({dir:dataDir,profileDir:ctx.desktopProfiles.current.dir,runningVersion:packageMetadata.version,publicKey:releaseKey.publicKey,installer:()=>ctx.get("desktopPnpm"),packageDir:path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..")});
+  const workspaces = workspaceActions(ctx, engine);
   const abort = new AbortController(); let pending = null;
   async function sync() {
     if (pending || abort.signal.aborted) return;
     pending = (async () => {
       const epoch = engine.epoch;
       const query = ctx.get("sessionQuery");
+      if(engine.auth && !engine.auth.user.mustChangePassword) {
+        if(query) for(const record of await query.listSessions()) engine.created({id:record.header.id,header:record.header,seq:0});
+        else for(const session of ctx.sessions.list()) { engine.created(session); engine.capture(session.id,session.snapshotEvents()); }
+      }
       if (engine.auth && query) {
         for (const id of Object.keys(engine.data.sessions)) {
           try {
@@ -33,14 +44,9 @@ export function apply(ctx, config = {}) {
   }
   ctx.on("session/created", session => engine.created(session));
   ctx.on("session/event", (session, event) => {
-    if (event.type !== "turn/end") return;
+    if (!["user/message", "assistant/message", "turn/end"].includes(event.type)) return;
     try { engine.capture(session.id, session.snapshotEvents()); }
     catch (error) { engine.status = error.code ?? error.message; }
-  });
-  ctx.inject(["systemPrompt"], scope => {
-    // Variable values are not re-interpolated, so memory text can contain {{...}} safely.
-    scope.systemPrompt.variable("team_hub_memory", assembly => engine.context(assembly));
-    scope.systemPrompt.context({ name: "team-hub:memory", order: 400, text: assembly => engine.context(assembly) ? "{{team_hub_memory}}" : "" });
   });
   ctx.inject(["tools"], scope => registerMemoryTools(scope, engine));
   const disposeRoute = ctx.webServer.register({ kind: "prefix", path: "/team-plugin", handler: async (req, res) => {
@@ -51,20 +57,25 @@ export function apply(ctx, config = {}) {
       ensure(["127.0.0.1", "::1", "::ffff:127.0.0.1"].includes(req.socket.remoteAddress), 403, "loopback_required");
       ensure(!req.headers.origin || req.headers.origin === `http://${host}`, 403, "invalid_origin");
       const url = new URL(req.url, `http://${host}`), relative = url.pathname.slice("/team-plugin".length);
-      const asset = { "": "index.html", "/": "index.html", "/app.js": "app.js", "/style.css": "style.css" }[relative];
+      const asset = { "": "index.html", "/": "index.html", "/app.js": "app.js", "/style.css": "style.css", "/agent-team.png":"agent-team.png" }[relative];
       if (req.method === "GET" && asset) {
         const content = await fs.readFile(new URL(`./ui/${asset}`, import.meta.url));
-        res.writeHead(200, { "content-type": asset.endsWith("html") ? "text/html; charset=utf-8" : asset.endsWith("css") ? "text/css" : "text/javascript",
+        res.writeHead(200, { "content-type": asset.endsWith("png")?"image/png":asset.endsWith("html") ? "text/html; charset=utf-8" : asset.endsWith("css") ? "text/css" : "text/javascript",
           "x-content-type-options": "nosniff", "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'self'; base-uri 'none'" });
         res.end(content); return;
       }
       ensure(req.method === "POST" && relative === "/local", 404, "not_found");
       ensure(req.headers["content-type"]?.split(";")[0] === "application/json", 415, "json_required");
       let size = 0; const chunks = [];
-      for await (const chunk of req) { size += chunk.length; ensure(size <= 256000, 413, "body_too_large"); chunks.push(chunk); }
+      for await (const chunk of req) { size += chunk.length; ensure(size <= 8_000_000, 413, "body_too_large"); chunks.push(chunk); }
       const input = JSON.parse(Buffer.concat(chunks).toString("utf8")); let result;
-      if (input.action === "state") result = { ...engine.view(), sessions: ctx.sessions.list().map(s => ({ id: s.id, cwd: s.header?.cwd ?? "" })), autoContext: Boolean(ctx.get("systemPrompt")) };
-      else if (input.action === "login") result = await engine.login(input);
+      if (input.action === "state") {await updater.ready;result = { ...engine.view(),update:updater.view(), availableWorkspaces:workspaces.list(), sessions: ctx.sessions.list().map(s => ({ id: s.id, cwd: s.header?.cwd ?? "" })) };}
+      else if(input.action==="check-update")result=await updater.check(true);
+      else if(input.action==="update-settings")result=await updater.configure(input.enabled);
+      else if (input.action === "bind-workspace") { result=await workspaces.bind(input); void sync(); }
+      else if (input.action === "reuse-session") result=await workspaces.reuse(input);
+      else if (input.action === "login") {result = await engine.login(input);void updater.connect(engine.hub).catch(()=>{});}
+      else if (input.action === "sso-login") {result = await engine.ssoLogin(input);void updater.connect(engine.hub).catch(()=>{});}
       else if (input.action === "logout") { await engine.logout(); result = { ok: true }; }
       else if (input.action === "password") result = await engine.password(input);
       else if (input.action === "bind") {
@@ -75,13 +86,14 @@ export function apply(ctx, config = {}) {
         result = { ok: true };
       } else if (input.action === "sync") { await sync(); result = engine.view(); }
       else if (input.action === "api") {
-        ensure(typeof input.route === "string" && /^\/(projects|invites|me|capabilities|users)(\/|\?|$)/.test(input.route) && !input.route.includes("..") && !input.route.includes("#"));
+        ensure(typeof input.route === "string" && /^\/(projects|invites|me|capabilities|users|settings)(\/|\?|$)/.test(input.route) && !input.route.includes("..") && !input.route.includes("#"));
         ensure(["GET", "POST", "DELETE"].includes(input.method ?? "GET"));
         result = await engine.api(input.route, input.method, input.input);
       } else ensure(false, 400, "unknown_action");
       send(200, result);
     } catch (error) { send(error.status ?? 400, { error: error.code ?? error.message }); }
   } });
-  const timer = setInterval(() => { void sync(); }, 15000); timer.unref();
-  ctx.effect(() => async () => { abort.abort(); clearInterval(timer); disposeRoute(); engine.abort.abort(); await pending; await engine.close(); }, "team-hub lifecycle");
+  const timer = setInterval(() => { void sync(); }, 2000); timer.unref();
+  const updateTimer=setInterval(()=>{void updater.check();},60000);updateTimer.unref();void updater.check();
+  ctx.effect(() => async () => { abort.abort(); clearInterval(timer);clearInterval(updateTimer);await updater.close(); disposeRoute(); engine.abort.abort(); await pending; await engine.close(); }, "team-hub lifecycle");
 }

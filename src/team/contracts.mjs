@@ -33,7 +33,7 @@ export async function member(db, user, projectId, management = false, lock = fal
     JOIN team_projects p ON p.id=m.project_id JOIN team_users u ON u.id=m.user_id
     WHERE m.project_id=$1 AND m.user_id=$2 AND u.active`, [projectId, user.id]);
   ensure(row, 403, "project_access_revoked");
-  if (management) ensure(row.role === "project_manager", 403, "permission_denied");
+  if (management) ensure(["project_manager", "technical_director"].includes(row.role), 403, "permission_denied");
   return row;
 }
 

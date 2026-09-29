@@ -1,5 +1,7 @@
 .git
 node_modules
+**/node_modules
+.plugin-signing
 artifacts
 *.tgz
 .env*

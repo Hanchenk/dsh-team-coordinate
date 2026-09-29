@@ -25,16 +25,30 @@ test("collector excludes runtime context, reasoning and tools", () => {
 test("model source validation rejects invented references",()=>{
   assert.throws(()=>validateResult({summary:"Summary",memories:[{title:"Claim",content:"C",category:"bugfix",evidence:"reported",sourceIds:["foreign"]}]},[{id:"1"}]));
 });
+test("long messages upload without turn-end and resume when the local queue drains",async()=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),"team-long-")), engine=new TeamEngine(dir);
+  try {
+    engine.auth={user:{mustChangePassword:false}};engine.key="test";engine.data={sessions:{},workspaces:{},queue:Array.from({length:199},()=>({})),caches:{}};
+    engine.bind({id:"long",seq:0,header:{}},randomUUID(),0);
+    const text="完整对话".repeat(40000), events=[message(0,"user/message",text)];
+    engine.capture("long",events);
+    assert.equal(engine.data.queue.length,200);
+    const first=engine.data.queue.at(-1).entries;
+    engine.data.queue=[];engine.capture("long",events);
+    const all=[...first,...engine.data.queue.flatMap(b=>b.entries)];
+    assert.equal(all.map(e=>e.text).join(""),text);assert.equal(new Set(all.map(e=>e.id)).size,all.length);
+  } finally {await engine.close();fs.rmSync(dir,{recursive:true,force:true});}
+});
 
 test("PostgreSQL, HTTP API, model worker and two desktop engines", {skip:!process.env.TEAM_TEST_DATABASE_URL}, async t=>{
   const schema="test_"+randomUUID().replaceAll("-","");
   const admin=database(process.env.TEAM_TEST_DATABASE_URL);await admin.query(`CREATE SCHEMA ${schema}`);
   const url=new URL(process.env.TEAM_TEST_DATABASE_URL);url.searchParams.set("options",`-c search_path=${schema}`);
   const db=database(url.href);await migrate(db);
-  let modelMode="good", calls=0;
+  let modelMode="good", calls=0;const modelInputs=[];
   const model=http.createServer(async(req,res)=>{
     let raw="";for await(const b of req)raw+=b;
-    const input=JSON.parse(raw), entries=JSON.parse(input.messages[1].content).entries;calls++;
+    const input=JSON.parse(raw), entries=JSON.parse(input.messages[1].content).entries;calls++;modelInputs.push(entries);
     res.setHeader("content-type","application/json");
     res.end(JSON.stringify({choices:[{message:{content:JSON.stringify({summary:"自动整理的项目会话摘要",memories:[{title:"订单幂等接口",content:"Use Idempotency-Key. {{braces}} remain literal.",category:"api-contract",evidence:"reported",sourceIds:[modelMode==="good"?entries[0].id:"foreign"]}]})}}]}));
   });
@@ -90,11 +104,57 @@ test("PostgreSQL, HTTP API, model worker and two desktop engines", {skip:!proces
     assert.deepEqual(b.data.caches,{});
     assert.equal(b.data.queue[0].operationId,id);await b.sync();assert.equal(b.data.queue.length,0);
   });
+  await t.test("switching accounts on one instance does not duplicate transcripts or model jobs",async()=>{
+    const jobs=(await a.api(`/projects/${project.id}/model-jobs`)).length;
+    await b.logout();await b.login({hub:base,name:"manager",password:changed});
+    b.bind(session,project.id,0);
+    b.capture(session.id,[...events,message(3,"user/message","追加说明"),{seq:4,type:"turn/end",data:{}}]);
+    await b.sync();assert.equal(b.data.queue.length,0);
+    const sessions=await b.api(`/projects/${project.id}/sessions`);assert.equal(sessions.items.length,1);assert.equal(sessions.items[0].message_count,3);
+    assert.equal((await b.api(`/projects/${project.id}/model-jobs`)).length,jobs);
+    await b.logout();await b.login({hub:base,name:"developer",password:changed});
+  });
+  await t.test("admin model settings are durable and never disclose credentials",async()=>{
+    await assert.rejects(()=>b.api("/settings/model"),/permission_denied/);
+    await assert.rejects(()=>b.api("/settings/model","POST",{}),/permission_denied/);
+    const config={baseUrl:`http://127.0.0.1:${model.address().port}/v1`,name:"configured-model",apiKey:"test-model-secret",timeoutMs:2000};
+    const saved=await a.api("/settings/model","POST",config);assert.equal(saved.hasApiKey,true);assert.equal(saved.apiKey,undefined);
+    await a.api("/settings/model","POST",{...config,apiKey:""});
+    assert.equal((await db.query("SELECT value FROM team_settings WHERE key='model'")).rows[0].value.apiKey,"test-model-secret");
+    await a.api("/settings/model","POST",{...config,clearApiKey:true});assert.equal((await a.api("/settings/model")).hasApiKey,false);
+  });
+  await t.test("direct membership and shared transcripts are project scoped",async()=>{
+    const director=await createUser(db,{name:"director",password:initial,assignedRoles:["technical_director"]});
+    const tester=(await db.query("SELECT id FROM team_users WHERE name='tester'")).rows[0];
+    await a.api(`/projects/${project.id}/members`,"POST",{userId:director.id,role:"technical_director"});
+    const auth=await a.raw(base,"/auth/login","POST",{name:"director",password:initial,device:"test"});
+    const changedAuth=await a.raw(base,"/auth/change-password","POST",{current:initial,next:changed},auth.accessToken);
+    await a.raw(base,`/projects/${project.id}/members`,"POST",{userId:tester.id,role:"qa_engineer"},changedAuth.accessToken);
+    await assert.rejects(()=>b.api(`/projects/${project.id}/member-candidates`),/permission_denied/);
+    const list=await b.api(`/projects/${project.id}/sessions`);assert.equal(list.items.length,1);
+    const transcript=await b.api(`/projects/${project.id}/sessions/${list.items[0].id}`);
+    assert.deepEqual(transcript.items.map(m=>m.content),["订单接口需要避免重复提交","使用 Idempotency-Key","追加说明"]);
+    await assert.rejects(()=>a.api(`/projects/${other.id}/sessions/${list.items[0].id}`),/session_not_found/);
+    await migrate(db);await migrate(db);
+    assert.equal((await b.api(`/projects/${project.id}/sessions/${list.items[0].id}`)).items.length,3);
+  });
   await t.test("invalid model output never publishes and schedules retry",async()=>{
     modelMode="bad";await app.worker.tick();
     const jobs=await b.api(`/projects/${project.id}/model-jobs`);assert.equal(jobs[0].state,"retry_wait");
     assert.equal((await b.api(`/projects/${project.id}/snapshot`)).memories.length,1);
+    assert.deepEqual(modelInputs.at(-1).map(e=>e.text),["订单接口需要避免重复提交","使用 Idempotency-Key","追加说明"]);
     modelMode="good";
+  });
+  await t.test("migration merges legacy duplicate sessions and preserves old links",async()=>{
+    const canonical=(await b.api(`/projects/${project.id}/sessions`)).items[0],alias=randomUUID();
+    await db.query("DROP INDEX team_shared_identity");
+    await db.query("DELETE FROM team_settings WHERE key='session-identity-v3'");
+    await db.query("INSERT INTO team_shared_sessions(id,project_id,user_id,device,profile,session,title) VALUES($1,$2,$3,$4,$5,$6,'duplicate')",[alias,project.id,pm.id,b.device,b.profile,session.id]);
+    await db.query("INSERT INTO team_session_messages(session_id,source_id,role,content) SELECT $1,source_id,role,content FROM team_session_messages WHERE session_id=$2",[alias,canonical.id]);
+    await migrate(db);await migrate(db);
+    assert.equal((await b.api(`/projects/${project.id}/sessions`)).items.length,1);
+    const oldLink=await b.api(`/projects/${project.id}/sessions/${alias}`);
+    assert.equal(oldLink.session.id,canonical.id);assert.equal(oldLink.items.length,3);
   });
   await t.test("withdrawal synchronizes a tombstone",async()=>{
     const memory=Object.values(a.data.caches[project.id].memories)[0];

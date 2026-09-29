@@ -1,12 +1,12 @@
 {
   "name": "dsh-plugin-team-hub",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.15",
   "description": "LAN project memory synchronization for DSH Desktop",
   "type": "module",
   "license": "MIT",
   "main": "lib/index.mjs",
   "exports": { ".": "./lib/index.mjs", "./client": "./lib/client.js", "./package.json": "./package.json" },
-  "files": ["lib", "README.md", "cordis.patch.yml"],
+  "files": ["lib", "README.md", "THIRD_PARTY_NOTICES.md", "cordis.patch.yml"],
   "engines": { "node": ">=22.19.0" },
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },

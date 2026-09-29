@@ -1,0 +1,5 @@
+.agent-dag{display:flex;gap:16px;overflow-x:auto;padding:8px 0 14px}
+.agent-dag-column{display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:128px;max-width:180px;flex-shrink:0}
+.agent-dag-column button{height:64px;width:100%;font-size:12px;justify-content:flex-start;border-left:3px solid #94a3a8;text-align:left;overflow:hidden}
+.agent-dag-column button span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.agent-dag-column .task-running{border-left-color:#4176e6}.agent-dag-column .task-blocked{border-left-color:#ef9a16}.agent-dag-column .task-completed{border-left-color:#22aa70}

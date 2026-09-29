@@ -1,0 +1,9 @@
+FROM node:22-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev --ignore-scripts
+COPY src ./src
+RUN mkdir -p /var/lib/team-runs /var/lib/team-secrets && chown -R node:node /var/lib/team-runs /var/lib/team-secrets
+USER node
+CMD ["node","src/team/agent-runner.mjs"]

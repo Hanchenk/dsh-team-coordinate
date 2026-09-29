@@ -1,4 +1,4 @@
-# DSH Team Hub Plugin
+# DSH Team Coordinate Plugin
 
 这是面向 DSH Desktop 的内网项目协作插件，当前版本 `0.1.0-alpha.11`。
 

@@ -1,6 +1,8 @@
-# dsh-team-hub
+# dsh-team-coordinate
 
-面向 [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness) 的团队协作服务。当前仓库：<https://github.com/Hanchenk/dsh-team-hub>。
+面向 [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness) 的团队协作服务。当前仓库：<https://github.com/Hanchenk/dsh-team-coordinate>。
+
+命令行、npm 包和运行目录仍使用 `dsh-team-hub`，已有安装无需迁移。
 
 [English README](README.en.md)
 

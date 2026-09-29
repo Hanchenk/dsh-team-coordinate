@@ -151,10 +151,10 @@ function loginPage(){
     }
   },"sso-login");
   const divider=el("div",{class:"login-divider",role:"separator"},el("span",{},"或使用账号密码"));
-  const footer=el("div",{class:"login-footer"},el("span",{class:"muted"},"DSH Team Hub · 团队协作服务"));
+  const footer=el("div",{class:"login-footer"},el("span",{class:"muted"},"DSH Team Coordinate · 团队协作服务"));
   const card=el("section",{class:"login login-page"},headerInfo,ssoButton,divider,loginForm,footer);
   const main=el("main",{class:"login-main"},card);
-  if(!plugin) root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Hub"))),main);
+  if(!plugin) root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Coordinate"))),main);
   else root.replaceChildren(main);
   paintIcons();
 }
@@ -168,13 +168,13 @@ function passwordPage(){
   const headerInfo=el("div",{class:"login-header"},badge,el("h2",{class:"login-title"},"修改初始密码"),el("p",{class:"login-desc"},"首次登录请修改初始密码以保障账号安全"));
   const card=el("section",{class:"login login-page"},headerInfo,passwordForm);
   const main=el("main",{class:"login-main"},card);
-  if(!plugin) root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Hub"))),main);
+  if(!plugin) root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Coordinate"))),main);
   else root.replaceChildren(main);
   paintIcons();
 }
 async function load(){projects=await api("/projects");if(!projects.some(p=>p.id===selected))selected=projects[0]?.id||"";if(plugin)local=await localCall("state");await shell();await promptWorkspace();}
 async function shell(){
-  root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Hub")),el("span",{class:"spacer"}),el("span",{class:"status",id:"sync-status"},plugin?`${local?.status||""} · 待上传 ${local?.pending||0}`:"内网协作"),el("span",{class:"muted"},user.displayName||user.name),btn("退出","log-out",async()=>{if(plugin)await localCall("logout");else await api("/auth/logout","POST",{});auth=null;user=null;loginPage();})));
+  root.replaceChildren(el("header",{},el("div",{class:"brand"},icon("users"),el("h1",{},"DSH Team Coordinate")),el("span",{class:"spacer"}),el("span",{class:"status",id:"sync-status"},plugin?`${local?.status||""} · 待上传 ${local?.pending||0}`:"内网协作"),el("span",{class:"muted"},user.displayName||user.name),btn("退出","log-out",async()=>{if(plugin)await localCall("logout");else await api("/auth/logout","POST",{});auth=null;user=null;loginPage();})));
   const main=el("main");root.append(main);
   if(plugin)root.querySelector("header").insertBefore(btn("插件更新","download",showPluginUpdate),root.querySelector("header").lastElementChild);
   const select=el("select",{"aria-label":"当前项目",onChange:async e=>{if(busy){e.target.value=selected;return;}selected=e.target.value;sharedSelection=null;sessionOffset=0;await run(async()=>{await content();await promptWorkspace();});}},projects.map(p=>el("option",{value:p.id,selected:p.id===selected},p.name)));

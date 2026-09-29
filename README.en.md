@@ -1,6 +1,8 @@
-# dsh-team-hub
+# dsh-team-coordinate
 
-A team collaboration service for [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness). Repository: <https://github.com/Hanchenk/dsh-team-hub>.
+A team collaboration service for [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness). Repository: <https://github.com/Hanchenk/dsh-team-coordinate>.
+
+The CLI, npm package, and runtime directory remain `dsh-team-hub`, so existing installations do not need to migrate.
 
 [中文 README](README.md)
 

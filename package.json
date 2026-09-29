@@ -59,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hanchenk/dsh-team-hub.git"
+    "url": "git+https://github.com/Hanchenk/dsh-team-coordinate.git"
   },
-  "homepage": "https://github.com/Hanchenk/dsh-team-hub#readme",
+  "homepage": "https://github.com/Hanchenk/dsh-team-coordinate#readme",
   "bugs": {
-    "url": "https://github.com/Hanchenk/dsh-team-hub/issues"
+    "url": "https://github.com/Hanchenk/dsh-team-coordinate/issues"
   }
 }

@@ -22,9 +22,22 @@ Current capabilities:
 - Project workbench: activity, kanban, tasks, assets, instructions, expert packs, and scheduled automations
 - A resident AgentTeams supervisor with multiple GitLab repositories per project. Plans require approval before execution. The service does not push, open merge requests, or deploy automatically
 - Ed25519-signed plugin releases and client auto-update
-- Optional Yemast passport SSO
 
-Trusted LAN pilots without SSO may use HTTP. Production deployments with SSO must sit behind an HTTPS reverse proxy. Team mode uses PostgreSQL and is configured separately from the gateway below.
+Trusted LAN pilots may use HTTP. Team mode uses PostgreSQL and is configured separately from the gateway below.
+
+### Screenshots
+
+Project memory, the workbench, and Agent collaboration:
+
+![Project memory](docs/assets/team-memory.png)
+
+![Project workbench](docs/assets/team-workbench.png)
+
+![Agent collaboration](docs/assets/team-agents.png)
+
+Session summaries in the Desktop plugin:
+
+![Team plugin](docs/assets/team-plugin.png)
 
 Guides:
 
@@ -61,7 +74,7 @@ node bin/dsh-team-hub.js team user-add developer developer
 unset TEAM_INITIAL_PASSWORD
 ```
 
-Roles may be comma-separated. LAN deployment, model configuration, and SSO are documented in [team collaboration](docs/team-collaboration.md). The Compose example is `compose.team.yml`; do not commit `.env.team`.
+Roles may be comma-separated. LAN deployment and model configuration are documented in [team collaboration](docs/team-collaboration.md). The Compose example is `compose.team.yml`; do not commit `.env.team`.
 
 Build the plugin with `npm run build:plugin`. Installation and release steps are in the plugin [README](packages/dsh-plugin-team-hub/README.md) and [auto-update guide](docs/plugin-auto-update.md). The signing private key is `.plugin-signing/private.pem` and is gitignored.
 
@@ -76,6 +89,8 @@ dsh-team-hub start
 ```
 
 Initialization prints the admin password once. Members open `http://<server-lan-ip>:3090`; the admin console is `/admin` on the same origin. Every user must change the initial password on first login.
+
+![Admin console](docs/assets/admin-console.png)
 
 ```bash
 dsh-team-hub init [--port 3090] [--upstream http://127.0.0.1:3080] [member ...]

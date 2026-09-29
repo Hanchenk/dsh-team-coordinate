@@ -22,9 +22,22 @@ Hub 包版本为 v0.2.7。插件源码在 `packages/dsh-plugin-team-hub`，当�
 - 项目工作台：动态、看板、任务、资产、项目指令、专家团和周期自动化
 - 服务器常驻 AgentTeams，支持为一个项目关联多个 GitLab 仓库；计划需在页面批准后执行，不自动推送、创建 MR 或部署
 - Ed25519 签名的插件发布与客户端自动更新
-- 可选的野马通行证 SSO
 
-未启用 SSO 的可信内网试点可以使用 HTTP。启用 SSO 的生产部署必须通过 HTTPS 反向代理。团队模式使用 PostgreSQL，配置与下方网关模式分开。
+可信内网试点可以使用 HTTP。团队模式使用 PostgreSQL，配置与下方网关模式分开。
+
+### 系统截图
+
+项目记忆、工作台和 Agent 协作：
+
+![项目记忆](docs/assets/team-memory.png)
+
+![项目工作台](docs/assets/team-workbench.png)
+
+![Agent 协作](docs/assets/team-agents.png)
+
+Desktop 插件里的会话摘要：
+
+![团队插件](docs/assets/team-plugin.png)
 
 详细说明：
 
@@ -61,7 +74,7 @@ node bin/dsh-team-hub.js team user-add developer developer
 unset TEAM_INITIAL_PASSWORD
 ```
 
-角色可用逗号分隔。公司内网部署、模型配置和 SSO 见 [内网项目协作说明](docs/team-collaboration.md)。Compose 示例为 `compose.team.yml`；包含密码的 `.env.team` 不应提交。
+角色可用逗号分隔。公司内网部署和模型配置见 [内网项目协作说明](docs/team-collaboration.md)。Compose 示例为 `compose.team.yml`；包含密码的 `.env.team` 不应提交。
 
 插件打包：
 
@@ -82,6 +95,8 @@ dsh-team-hub start
 ```
 
 初始化会打印一次 admin 初始密码。成员入口为 `http://<服务器局域网IP>:3090`，Admin 控制台为同地址下的 `/admin`。所有用户首次登录都必须修改密码。
+
+![Admin 控制台](docs/assets/admin-console.png)
 
 常用命令：
 
